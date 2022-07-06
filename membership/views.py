@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Packages
-
+from .models import Packages, SelectedPackage
+import re
 
 @login_required(login_url='login')
 def all_memberships(request):
@@ -50,3 +50,36 @@ def signalonly_checkout(request):
         'package':package
     }
     return render(request, 'membership/signalonly_checkout.html', context)
+
+
+
+
+def save_selected_package(request):
+    if request.method == 'POST':
+        user = request.user
+        title = request.POST['title']
+        str_price = request.POST['price']
+        temp = re.findall(r'\d+', str_price)
+        price = list(map(int,temp))
+        left_value = str(price[0])
+        right_value = str(price[1])
+        price = left_value + "." + right_value 
+        package = SelectedPackage.objects.create(user=user, title=title, price=price)
+        package.save()
+        return redirect('index')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
