@@ -1,0 +1,936 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Homepage - Stock Sniper Trading</title>
+  <link rel='shortcut icon' href="{% static 'images/nav/fav-icon.png' %}" type='image/x-icon'>
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- === header section start === -->
+  <header class="header">
+    <nav class="navbar navbar-expand-xl navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img class="img-fluid brand-logo" src="{% static 'images/nav/Icon.png' %}" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto align-items-xl-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Calender
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">1 On 1 Session</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
+                <li><a class="dropdown-item" href="#">Economic Calender</a></li>
+                <li><a class="dropdown-item" href="#">Earning Reports</a></li> -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'all_memberships' %}">Memberships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
+            </li>
+            <li class="nav-item image">
+              <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+            </li>
+            {% endif %}
+          
+            <li class="nav-item">
+              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+  </header>
+  <!-- ===//end of header section === -->
+ 
+
+  <!-- === banner section start === -->
+  <section class="banner">
+    <div class="container top-index">
+      <div class="row g-lg-5 g-4">
+        <div class="col-lg-6">
+          <div class="text py-3">
+            <h1 class="section-heading">Learn how <br>
+              to Trade with <br>
+              <span>Stock Sniper Trading</span>
+            </h1>
+            <p class="py-4">
+              We will teach you how to become a consistent and profitable trader by teaching you technical and fundamental analysis. If you don’t understand these terms don’t worry, you are not alone. We start with the basics and teach you step-by-step how to read charts, learn trading terms, and understand our psychology behind trading.
+            </p>
+            <a href="#" class="custom-red-button">Start Now</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="image py-3 text-center">
+            <img class="img-fluid" src="{% static 'images/banner/banner-image.png' %}" alt="banner-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===//end of banner section === -->
+
+
+  <!-- === market trending session section start === -->
+  <section class="market-trading-session">
+    <div class="container">
+      <div class="section-header text-center">
+        <h1 class="section-heading">Market Trading Sessions</h1>
+        <img class="img-fluid py-3" src="{% static 'images/market-trading/symbol.png' %}" alt="">
+      </div>
+      <div class="section-body">
+        <div class="items pt-md-4 pt-2">
+          <div class="row g-4">
+            <div class="col-xl-4 col-lg-6 ">
+              <div class="item h-100">
+                <div class="market-trading-card japan">
+                  <div class="top-section">
+                    <div class="country text-center">
+                      <img src="{% static 'images/market-trading/flag-japan.png' %}" alt="flag">
+                      <h2>Japan</h2>
+                      <div class="dots">
+                        <img class="img-fluid w-100" src="{% static 'images/market-trading/dott.png' %}" alt="DOT">
+                      </div>
+                    </div>
+                    <div class="counter">
+                      <ul class="d-flex justify-content-center">
+                        <li class="count-item">
+                          <div class="number"><p id="jday">01</p></div>
+                          <div class="text"><p>Days</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="jhour">10</p></div>
+                          <div class="text"><p>hrs</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="jmin">36</p></div>
+                          <div class="text"><p>mins</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="jsec">22</p></div>
+                          <div class="text"><p>secs</p></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="bottom-section">
+                    <div class="local-time">
+                      <ul class="d-flex align-items-center justify-content-between">
+                        <li class="time-zone"><p>Tokyo Time Now</p></li>
+                        <li class="time"><p>05:40 AM</p></li>
+                      </ul>
+                    </div>
+                    <div class="join-now">
+                      <a href="#">
+                        <ul class="d-flex justify-content-between align-items-center">
+                          <li class="text"><p>Join now</p></li>
+                          <li class="icon"><img class="img-fluid w-100" src="{% static 'images/market-trading/live-streaming-red.png' %}" alt="live-streaming"></li>
+                        </ul>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 ">  
+              <div class="item">
+                <div class="market-trading-card london">
+                  <div class="top-section">
+                    <div class="country text-center">
+                      <img src="{% static 'images/market-trading/flag-uk.png' %}" alt="flag">
+                      <h2>london</h2>
+                      <div class="dots">
+                        <img class="img-fluid w-100" src="{% static 'images/market-trading/dott.png' %}" alt="DOT">
+                      </div>
+                    </div>
+                    <div class="counter">
+                      <ul class="d-flex justify-content-center">
+                        <li class="count-item">
+                          <div class="number"><p id="lday">01</p></div>
+                          <div class="text"><p>Days</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="lhour">10</p></div>
+                          <div class="text"><p>hrs</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="lmin">36</p></div>
+                          <div class="text"><p>mins</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="lsec">22</p></div>
+                          <div class="text"><p>secs</p></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="bottom-section">
+                    <div class="local-time">
+                      <ul class="d-flex align-items-center justify-content-between">
+                        <li class="time-zone"><p>London Time Now</p></li>
+                        <li class="time"><p>05:40 AM</p></li>
+                      </ul>
+                    </div>
+                    <div class="join-now">
+                      <a href="#">
+                        <ul class="d-flex justify-content-between align-items-center">
+                          <li class="text"><p>Join now</p></li>
+                          <li class="icon"><img class="img-fluid w-100" src="{% static 'images/market-trading/live-streaming-green.png' %}" alt="live-streaming"></li>
+                        </ul>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 ">
+              <div class="item">
+                <div class="market-trading-card h-100 new-york">
+                  <div class="top-section">
+                    <div class="country text-center">
+                      <img src="{% static 'images/market-trading/flag-usa.png' %}" alt="flag">
+                      <h2>New York</h2>
+                      <div class="dots">
+                        <img class="img-fluid w-100" src="{% static 'images/market-trading/dott.png' %}" alt="DOT">
+                      </div>
+                    </div>
+                    <div class="counter">
+                      <ul class="d-flex justify-content-center">
+                        <li class="count-item">
+                          <div class="number"><p id="nday">01</p></div>
+                          <div class="text"><p>Days</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="nhour">10</p></div>
+                          <div class="text"><p>hrs</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="nmin">36</p></div>
+                          <div class="text"><p>mins</p></div>
+                        </li>
+                        <li class="count-item">
+                          <div class="number"><p id="nsec">22</p></div>
+                          <div class="text"><p>secs</p></div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="bottom-section">
+                    <div class="local-time">
+                      <ul class="d-flex align-items-center justify-content-between">
+                        <li class="time-zone"><p>New York Time Now</p></li>
+                        <li class="time"><p>05:40 AM</p></li>
+                      </ul>
+                    </div>
+                    <div class="join-now">
+                      <a href="#">
+                        <ul class="d-flex justify-content-between align-items-center">
+                          <li class="text"><p>Join now</p></li>
+                          <li class="icon"><img class="img-fluid w-100" src="{% static 'images/market-trading/live-streaming-green.png' %}" alt="live-streaming"></li>
+                        </ul>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===//end of market trending session section === -->
+
+
+  <!-- === membership program start === -->
+  <section class="membership-program">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-heading pb-2">Our Exlusive Membership Program</h2>
+        <p>Through structured lessons, interactive instruction, and dedicated support, you’ll have the opportunity to develop the skills 
+          needed to execute our Core Strategy — designed to empower you to generate income and build wealth.</p>
+      </div>
+      <div class="devider text-center">
+        <img class="img-fluid w-100" src="{% static 'images/membership/dot.png' %}" alt="dots">
+      </div>
+      <div class="section-body pt-3">
+        <div class="top-cards">
+          <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+              <div class="item h-100">
+                <div class="membership-card">
+                  <img class="w-100 color-img" src="{% static 'images/membership/01.bronze.png' %}" alt="color">
+                  <div class="card-header text-center">
+                    <div class="text">
+                      <h3>monthly membership <br>
+                      <span>$59.99 usd + tax</span></h3>
+                    </div>
+                    <div class="image">
+                      <img src="{% static 'images/membership/mm-1-image.png' %}" alt="card-image">
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <ul>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>50 hours a month Live Trading on Zoom + Opportunities to Join Us on YouTube Live.</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>52 Weeks Educational Program Designed to help you understand Candlesticks, Indicators, Analysis, and the psychology of trading.</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>Case Studies & Over 1500 + Hours of Live Content which will be breakdown strategies, show how we trade, and live Q & A during Zoom Calls.</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>Trade Ideas each day provided with SL (Stop-Loss), TP (Take-Profit), and Entry Point. These are done on all different frames.</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>We set you up for Trading Success by Teaching you the psychology behind trading.</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>We teach you multiple different strategies that apply to Stocks and Forex.</p>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="button">
+                      <a href="{% url 'all_memberships' %}" class="btn custom-red-button ">Buy Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="item h-100">
+                <div class="membership-card">
+                  <img class="w-100 color-img" src="{% static 'images/membership/02.Silver.png'%}" alt="color">
+                  <div class="card-header text-center">
+                    <div class="text">
+                      <h3>Stock sniper <br>
+                        3 / 6 / 12 month plans</h3>
+                    </div>
+                    <div class="image">
+                      <img src="{% static 'images/membership/mm-2-image.png'%}" alt="card-image">
+                    </div>
+                  </div>
+                  
+                  <div class="card-body">
+                    <ul>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p class="m-bold">Bronze - 3 Months: $169.99 USD + TAX <br>
+                            <span>($10 savings)</span>
+                            </p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p class="m-bold">
+                            Silver - 6 Months: $339.99 USD + TAX <br>
+                            <span>($20 savings)</span>
+                          </p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p class="m-bold">Gold - 12 Months: $679.99 USD + TAX <br>
+                            <span>($40 savings)</span></p>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="button">
+                      <a href="{% url 'all_memberships' %}" class="btn custom-red-button ">Buy Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+              <div class="item h-100">
+                <div class="membership-card">
+                  <img class="w-100 color-img" src="{% static 'images/membership/03.Gold.png' %}" alt="color-img">
+                  <div class="card-header text-center">
+                    <div class="text">
+                      <h3>1 on 1 <br>
+                        trading consulting</h3>
+                    </div>
+                    <div class="image">
+                      <img src="{% static 'images/membership/mm-3-image.png' %}" alt="card-image">
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <ul>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p class="m-bold">1 Session: 69.99 USD + TAX</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p class="m-bold">3 Session: 199.99 USD + TAX
+                            <span>($10 savings)</span></p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p class="m-bold">6 Session: 399.99 USD + TAX
+                            <span>($20 savings)</span></p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p class="m-bold">12 Session: 799.99 USD + TAX
+                            <span>($40 savings)</span></p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>One 90 min Zoom Meeting with Stock Sniper Trading.</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>You will be required to bring a list of questions.</p>
+                        </div>
+                      </li>
+                      <li class="d-flex">
+                        <div class="icon me-2">
+                          <img src="{% static 'images/membership/unordered-list-bullet.png' %}" alt="bullet">
+                        </div>
+                        <div class="text">
+                          <p>A recording of the meeting will be sent to your email.</p>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="button">
+                      <a href="{% url 'all_memberships' %}" class="btn custom-red-button ">Buy Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-cards">
+          <div class="row gy-3 py-3">
+            <div class="col-md-6 ">
+              <div class="item h-100">
+                <div class="membership-bottom-card">
+                  <div class="icon">
+                    <img class="img-fluid" src="{% static 'images/membership/time-copy.png' %}" alt="icon">
+                  </div>
+                  <div class="text mb-xl-0 mb-2">
+                    <h3>
+                      SNIPER LIFETIME MEMBERSHIP <br>
+                      <span>$1,499.99 usd + tax</span>
+                    </h3>
+                  </div>
+                  <div class="button">
+                    <a href="{% url 'all_memberships' %}" class="custom-red-button text-nowrap"> Buy Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="item h-100">
+                <div class="membership-bottom-card">
+                  <div class="icon">
+                    <img class="img-fluid" src="{% static 'images/membership/bell.png' %}" alt="icon">
+                    <sup class="bell-notification">1</sup>
+                  </div>
+
+                  <div class="text">
+                    <h3>
+                      ALERTS ONLY SUBSCRIPTION  <br>
+                      <span class="light"> Access our Private Discord Server</span> <br>
+                      Receive upto 3-4 Alerts/day
+                    </h3>
+                  </div>
+                  <div class="button-2">
+                    <p>$29.99 usd + tax</p>
+                    <a href="{% url 'all_memberships' %}" class="custom-red-button text-nowrap">Buy Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===//end of membership program === -->
+ 
+   
+  <!-- === trading-program section start === -->
+  <section class="trading-program">
+    <div class="top-section pb-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-4">
+            <div class="section-header">
+              <h2 class="section-heading">
+                Stock Sniper <br>
+                Trading Program <br>
+                Benefits
+              </h2>
+              <img class="img-fluid w-100" src="{% static 'images/trading-program/dots.png' %}" alt="dot">
+            </div>
+          </div>
+          <div class="col-xl-8">
+            <div class="row g-md-5 g-sm-2">
+              <div class="col-md-6 col-sm-12">
+                <div class="trade-info-card">
+                  <div class="content">
+                    <h4>
+                      forex academy
+                    </h4>
+                    <p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="trade-info-card">
+                  <div class="content">
+                    <h4>
+                      forex academy
+                    </h4>
+                    <p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="trade-info-card">
+                  <div class="content">
+                    <h4>
+                      forex academy
+                    </h4>
+                    <p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="trade-info-card">
+                  <div class="content">
+                    <h4>
+                      forex academy
+                    </h4>
+                    <p>Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>  
+      </div>
+    </div>
+    
+    <div class="bottom-section pt-5">
+      <div class="container">
+        <div class="contents">
+          <div class="row text-xl-left text-center">
+            <div class="col-xl-4">
+              <div class="section-header">
+                <h2>
+                  <span>new?</span>  <br>
+                   find out what we do here at <br>
+                    stock sniper tra  ding 
+                </h2>
+    
+                <div class="watch-btn m-3">
+                  <button type="button" class="play-btn text-nowrap btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="fas fa-play play-sign"></i> Click to Watch
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xl-8">
+              <div class="image">
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" aria-hidden="true">
+                  <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content bg-dark">
+                      <div class="modal-header">
+                        <button type="button" onclick="pauseVid()" class="p-1 btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <video id="myVideo" class="video ratio h-100" controls>
+                          <source src="{% static 'video/Homepage-Stock-Sniper-Trading.mp4' %}" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <img class="img-fluid h-100" src="{% static 'images/trading-program/tablet.png' %}" alt="image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  <!-- ===//end of trading-program section === -->
+
+
+  <!-- === contact section start === -->
+  <section class="contact">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-heading">get in touch</h2>
+      </div>
+      <div class="message-form pb-2 text-center">
+        <form action="message-sent" method="post">
+          {% csrf_token %}
+          <div class="form-header">
+            <h3>Any questions or quires, feel free to drop us a message.</h3>
+          </div>
+          <div class="form-body">
+            <div class="row g-4">
+              <!-- name input started -->
+              <div class="col-md-4">
+                <div class="form-floating input-item">
+                  <input type="text" class="form-control input-box" id="full_name" placeholder="Your Name" name="full_name" value="{{user.first_name}} {{user.last_name}}">
+                  <label for="name"><i class="fas fa-user"></i> Your Name </label>
+                </div>
+              </div>
+              <!-- name input ended -->
+
+              <!-- email input started -->
+              <div class="col-md-4">
+                <div class="form-floating input-item">
+                  <input type="email" class="form-control input-box" id="email" placeholder="Your Email Address" name="email" value="{{user.email}}">
+                  <label for="email"><i class="fas fa-envelope"></i> Email </label>
+                </div>
+              </div>
+              <!-- email input ended -->
+
+              <!-- phone input started -->
+              <div class="col-md-4">
+                <div class="form-floating input-item">
+                  <input type="text" class="form-control input-box" id="number" placeholder="Your Number" name="number">
+                  <label for="phone-number"><i class="fas fa-mobile-alt"></i> Your Number</label>
+                </div>
+              </div>
+              <!-- phone input ended -->
+
+              <!-- text area -->
+              <div class="col-12">
+                <div class="input-item">
+                    <label class="text-nowrap mt-4 ps-2" for="textarea"><i class="fas fa-comment-alt-dots" ></i> Your Message </label>
+                </div>
+                <div class="input-item">
+                  <textarea class="pb-3 form-control input-box" name="message" id="message" placeholder=""></textarea>
+                </div>
+              </div>
+            </div>
+            <!-- text area ended--> 
+
+            <input type="submit" value="Send Message" class="btn custom-red-button text-center">
+          </div>
+        </form>
+      </div>
+
+      <div class="newsletter-form pt-5">
+        <div class="form-header">
+          <h2>Subscribe to our Mailchimp Newsletter <br>
+            <span>and Stay up to date with all events coming straight:</span> </h2>
+        </div>
+        <div class="pt-3">
+            <form class="form-control form-body rounded-pill m-auto" action="newsletter" method="POST">
+              {% csrf_token %}
+              <i class="fas fa-envelope"></i>
+              <input class="input form-control" type="email" name="email" placeholder="Your Email Address">
+              <button type="submit" class="btn btn-subscribe">Subscribe</button>
+              <!-- <input type="submit" value="Send Message" class="btn custom-red-button text-center"> -->
+            </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===//end of contact section === -->
+
+  
+  <!-- === social-networks section start === -->
+  <section class="social-networks">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-heading">Stay Connected on all our networks</h2>
+        <span>to not miss out our daily fundamental and technical analysis, trades and more...</span>
+      </div>
+
+      <div class="section-content">
+        <div class="row gy-4 px-md-5">
+          <div class="col">
+            <a href="https://www.youtube.com/c/StockSniperTrading" target="_blank">
+              <div class="social-net-link">
+                <div class="icon">
+                  <img class="img-fluid" src="{% static 'images/social-links/youtube.png' %}" alt="social-net-link">  
+                </div>
+                <div class="text">
+                  <p>Youtube</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="#">
+              <div class="social-net-link">
+                <div class="icon">
+                  <img class="img-fluid" src="{% static 'images/social-links/telegram.png' %}" alt="social-net-link">  
+                </div>
+                <div class="text">
+                  <p>telegram</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="#">
+              <div class="social-net-link">
+                <div class="icon">
+                  <img class="img-fluid" src="{% static 'images/social-links/fb.png' %}" alt="social-net-link">  
+                </div>
+                <div class="text">
+                  <p>facebook</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="#">
+              <div class="social-net-link">
+                <div class="icon">
+                  <img class="img-fluid" src="{% static 'images/social-links/insta.png' %}" alt="social-net-link">  
+                </div>
+                <div class="text">
+                  <p>instagram</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="#">
+              <div class="social-net-link">
+                <div class="icon">
+                  <img class="img-fluid" src="{% static 'images/social-links/twitter.png' %}" alt="social-net-link">  
+                </div>
+                <div class="text">
+                  <p>twitter</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="#">
+              <div class="social-net-link">
+                <div class="icon">
+                  <img class="img-fluid" src="{% static 'images/social-links/tiktok.png' %}" alt="social-net-link">  
+                </div>
+                <div class="text">
+                  <p>tiktok</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a href="#">
+              <div class="social-net-link">
+                <div class="icon">
+                  <img class="img-fluid" src="{% static 'images/social-links/discord.png' %}" alt="social-net-link">  
+                </div>
+                <div class="text">
+                  <p>discord</p>                  
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===//end of social-networks section === -->
+
+
+  <!-- === footer section start === -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-lg-6">
+          <div class="logo">
+            <img class="img-fluid" src="{% static 'images/nav/Icon.png' %}" alt="logo">
+          </div>
+          <div class="text">
+            <p>
+              At SST, we will mentor you to become a
+              more consistent and profitable trader, by
+              teaching you technical and fundamental
+              analysis. <br> <br>
+              We start with the basics and teach you
+              step by step how to read and interpret
+              charts, learn various trading strategies, and
+              help understand the psychology behind
+              trading. Take your trading to the next level
+              and join the fast growing sniper team.
+              <br><br>
+    
+              © 2022
+              All Rights Reserved for Stock Sniper Trading
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-4">
+          <div class="navigation-links">
+            <h4>Navigation</h4>
+
+            <ul>
+              <li><a href="#">Home</a></li>
+              <!-- <li><a href="#">About Us</a></li> -->
+              <li><a href="#">Calender</a></li>
+              <li><a href="{% url 'all_memberships' %}">Membership</a></li>
+              <li><a href="#">Store</a></li>
+              <li><a href="{% url 'contact_us' %}">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-8">
+          <div class="contact-info">
+            <h4>Contact Details</h4>
+            <span>Email Address</span>
+            <a href="mailto:stocksnipertrading@gmail.com">stocksnipertrading@gmail.com</a>
+          </div>
+          <div class="social-link">
+            <h4>Stay Connected</h4>
+            <div class="icons">
+              <ul>
+                <li><a href="#"><img src="{% static 'images/social-links/telegram.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/youtube.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/insta.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/fb.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/twitter.png' %}" alt="icon"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ===//end of footer section === -->
+  
+
+
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script>
+    // dropdown menu show/hide on hover start
+    (function () {
+      const dropdown = document.querySelector('.dropdown');
+      const navbarDropdown = document.querySelector('#navbarDropdown');
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+
+      dropdown.addEventListener('mouseenter', function(){
+        navbarDropdown.classList.add('show');
+        dropdownMenu.classList.add('show');
+      })
+      dropdown.addEventListener('mouseleave', function(){
+        navbarDropdown.classList.remove('show');
+        dropdownMenu.classList.remove('show');
+      })
+    })();
+    // dropdown menu show/hide on hover end
+  </script>
+</body>
+</html>

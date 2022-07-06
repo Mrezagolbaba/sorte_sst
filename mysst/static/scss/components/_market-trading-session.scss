@@ -1,0 +1,20 @@
+.market-trading-session{
+   background: url(../images/market-trading/bg-1.png) no-repeat top center/cover;
+   padding: 80px 0;
+  
+   @media(max-width: 767px) {
+      padding: 50px 0;
+   }
+
+   .market-trading-card{
+      &.japan{
+         background: url(../images/market-trading/map-tokyo.png) no-repeat center center, url(../images/market-trading/bg-corner-icon.png) no-repeat top right;
+      }
+      &.london{
+         background: url(../images/market-trading/map-london.png) no-repeat center center, url(../images/market-trading/bg-corner-icon.png) no-repeat top right;
+      }
+      &.new-york{
+         background: url(../images/market-trading/map-new-york.png) no-repeat center center, url(../images/market-trading/bg-corner-icon.png) no-repeat top right;
+      }
+   }
+}

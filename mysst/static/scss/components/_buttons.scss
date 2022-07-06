@@ -1,0 +1,49 @@
+.custom-red-button{
+   background: $color-red;
+   color: $color-white;
+   font-family: 'Century Gothic Regular';  
+   font-size: 18px; 
+   border-radius: 10px;
+   padding: 10px 30px;
+
+   &:hover{
+      color: $color-white;
+   }
+}
+
+
+.watch-btn{
+
+   .play-btn{
+      font-family: 'Century Gothic Regular';  
+      font-size: 20px; 
+      background: $color-black;
+      color: $color-white; 
+      padding: 10px 30px;
+      border-radius: 10px;
+      border: 1px dashed $color-white;
+      position: relative;
+      
+      
+      .play-sign{
+         position: absolute;
+         top: 2px;
+         left: -20px;
+         height: 40px;
+         width: 40px;
+         background: $color-red;
+         border-radius: 50%;
+         font-size: 20px; 
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+   }
+}
+
+.btn-subscribe{
+   color: $color-white;
+   padding: 8px 40px;
+   border-radius: 10px;
+   background: #676977;
+}

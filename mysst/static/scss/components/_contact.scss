@@ -1,0 +1,16 @@
+.contact{
+   background: url(../images/contact/background-contact.png) no-repeat top center/cover;
+   padding: 80px 0;
+  
+   @media(max-width: 767px) {
+      padding: 50px 0;
+   }
+
+   .section-header{
+      h2{
+         font-family: 'Century Gothic Bold';
+         font-size: 40px;
+         text-transform: uppercase;
+      }
+   }
+}

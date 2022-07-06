@@ -1,0 +1,98 @@
+.quiz_title {
+	text-align: center;
+	margin-bottom: 20px;
+	font-family: 'Century Gothic Regular';
+	position: relative;
+	z-index: 2;
+}
+.quiz_title {
+	font-weight: 700;
+}
+.quiz_form {
+	position: relative;
+	z-index: 9;
+	padding-left: 100px;
+}
+.quiz_form h2 {
+	margin-bottom: 10px;
+	font-family: 'Century Gothic Regular';
+	font-size: 28px;
+}
+.quiz_form p {
+	padding: 5px 0px;
+}
+.quiz_form [type="radio"]:checked,
+.quiz_form [type="radio"]:not(:checked) {
+	position: absolute;
+	left: -9999px;
+}
+.quiz_form [type="radio"]:checked + label, .quiz_form [type="radio"]:not(:checked) + label {
+	position: relative;
+	padding-left: 28px;
+	cursor: pointer;
+	line-height: 20px;
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Century Gothic Regular';
+}
+.quiz_form [type="radio"]:checked + label::before, .quiz_form [type="radio"]:not(:checked) + label::before {
+	content: '';
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #ddd;
+	border-radius: 100%;
+	background: #fff;
+}
+.quiz_form [type="radio"]:checked + label::after, .quiz_form [type="radio"]:not(:checked) + label::after {
+	content: '';
+	width: 12px;
+	height: 12px;
+	background: red;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	border-radius: 100%;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+.quiz_form [type="radio"]:not(:checked) + label:after {
+	opacity: 0;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+.quiz_form [type="radio"]:checked + label:after {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+.quiz_button {}
+.quiz_button .nextprev {
+	margin-top: 10px;
+}
+.quiz_button .nextprev button {
+	background: red;
+	display: inline-block;
+	border: none;
+	padding: 5px 20px;
+	border-radius: 5px;
+	color: #fff;
+	margin: 10px 0px 20px 0px;
+}
+
+@media all and (max-width:  991px) {
+	.quiz_form {
+		padding-left: 75px;
+	}
+}
+@media all and (max-width:  767px) {
+	.quiz_title {
+		margin-top: 50px;
+	}
+	.quiz_form h2 {
+		font-size: 24px;
+	}
+}

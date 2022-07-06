@@ -1,0 +1,290 @@
+// market tradeing card
+.market-trading-card{
+   overflow: hidden;
+   height: 100%;
+   border-radius: 5px;
+   border: 1px solid $color-white;
+   // max-width: 365px;
+   
+
+
+
+   .top-section{
+      position: relative;
+      z-index: 999;
+
+      &::after{
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         height: 100%;
+         width: 100%;
+         background: #870000;
+         z-index: -1;
+      }
+      .country{
+         padding-top: 10px;
+         h2{
+            font-family: 'Century Gothic Bold';
+            font-size: 30px;
+            text-transform: uppercase;
+         }
+      }
+
+      .counter{
+         padding-bottom: 5px;
+         .count-item{
+            margin: 5px;
+            display: grid;
+            place-items: center;
+
+            .number{
+               background: $color-white;
+               color: $color-black;
+               height: 40px;
+               width: 40px;
+               border-radius: 50%;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               margin-bottom: 5px;
+
+               p{
+                  font-family: 'Century Gothic Regular';
+                  font-size: 20px;
+               }
+            }
+
+            .text{
+               p{
+                  text-transform: uppercase;
+                  font-family: 'Century Gothic Regular';
+                  font-size: 12px;
+               }
+            }
+         }
+      }
+   }
+
+   .bottom-section{
+      .local-time{
+         padding: 17px 0;
+         background: rgb(18,18,18);
+         background: linear-gradient(0deg, rgba(18,18,18, 0.9) 0%, rgba(42,42,42,0.9) 100%);
+      
+         ul{
+            padding: 0 20px;
+            .time-zone{
+               p{
+                  font-family: 'Century Gothic Regular';
+                  font-size: 17px;
+               }
+            }
+   
+            .time{
+               font-family: 'Century Gothic Regular';
+               font-size: 14px;
+            }
+         }
+      }
+
+      .join-now{
+         padding: 10px 0;
+         background: $color-white;
+         opacity: 0.8;
+
+         ul{
+            padding: 0 20px;
+
+            .text{
+               p{
+                  font-family: 'Century Gothic Bold';
+                  font-size: 17px;
+                  color: $color-black;
+               }
+            }
+
+            .icon{
+               width: 35px;
+            }
+         }
+      }
+   }
+}
+// market tradeing card ends
+
+
+// membership-card starts
+.membership-card{
+   overflow: hidden;
+   border-radius: 20px;
+   background: url(../images/membership/card-bg.png) no-repeat bottom right/cover;
+   height: 100%;
+   position: relative;
+   padding-bottom: 110px;
+
+   .color-img{
+      vertical-align: top;
+   }
+
+   .card-header{
+      .text{
+         h3{
+            font-family: 'Century Gothic Bold';
+            color: $color-black;
+            font-size: 20px;
+            text-transform: uppercase;
+            line-height: 1.5;
+
+            span{
+               font-family: 'Century Gothic Regular';
+               font-size: 16px;
+               color: $color-black;
+            }
+         }
+      }
+
+      .image{
+         margin: 10px 0;
+      }
+   }
+
+   .card-body{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      ul{
+         li{
+            margin: 12px 0;
+            .text{
+               p{
+                  font-family: 'Myriad Pro Regular';
+                  color: $color-black;
+                  font-size: 15px;
+                  line-height: 20px;
+
+                  &.m-bold{
+                     font-family: 'Myriad Pro Bold';
+                     color: $color-black;
+                     font-size: 15px;
+                  }
+               }
+            }
+         }
+      }
+
+      .button{
+         text-align: center;
+         justify-self: end;
+         position: absolute;
+         bottom: 30px;
+         left: 50%;
+         transform: translateX(-50%);
+      }
+   }
+}
+// membership-card ends
+
+
+// membership-bottom-card starts
+.membership-bottom-card{
+   overflow: hidden;
+   padding: 25px 20px;
+   height: 100%;
+   border-radius: 25px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   background: url(../images/membership/bottom-card-bg.png) no-repeat top left/cover;
+
+   @media(max-width:1199px) {
+      flex-direction: column;
+   }
+   
+   .icon{
+      position: relative;
+      
+      .bell-notification{
+         position: absolute;
+         top: 12%;
+         right: -2px;
+         background: $color-red;
+         height: 20px;
+         width: 20px;
+         padding: 5px;
+         border-radius: 50%;
+         border: 3px solid $color-white;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+   }
+   .text{
+      h3{
+         font-family: 'Century Gothic Bold';
+         color: $color-black;
+         font-size: 18px;
+
+         span{
+            font-family: 'Century Gothic Bold';
+            color: $color-red;
+            font-size: 16px;
+
+            &.light{
+               font-family: 'Century Gothic Regular';
+               color: $color-black;
+               font-size: 18px;
+            }
+         }
+      }
+   }
+
+   .button-2{
+      p{
+         font-family: 'Century Gothic Bold';
+         color: $color-red;
+         font-size: 16px;
+         margin-bottom: 10px;
+      }
+   }
+}
+// membership-bottom-card ends
+
+
+// .trade-info-card starts
+.trade-info-card{
+   background: $color-black;
+   padding: 3px 3px 3px 0px;
+   margin: 5px;
+   border-radius: 10px;
+   border-top: 2px dashed $color-white;
+   border-right: 2px dashed $color-white;
+   border-bottom: 2px dashed $color-white;
+   
+   .content{
+      background: $color-white;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;    
+      padding: 20px 20px 20px 10px;
+      border-left: 20px solid $color-dark-red;
+
+
+      h4{
+         font-family: 'Myriad Pro Bold';
+         text-transform: uppercase;
+         color: $color-ash-black;
+         font-size: 17px;
+         padding-bottom: 15px;
+      }
+   
+      p{
+         font-family: 'Myriad Pro Regular';
+         font-size: 15px;
+         color: $color-ash-black;
+      }
+   }
+}
+// .trade-info-card end

@@ -1,0 +1,12 @@
+.section-heading{
+   font-family: 'Century Gothic Regular';
+   font-size: 35px;
+   color: $color-white;
+   span{
+      font-family: 'Century Gothic Bold';
+   }
+
+   @media(max-width: 768px){
+      font-size: 30px;
+   }
+}

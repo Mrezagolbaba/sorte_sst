@@ -1,0 +1,101 @@
+.navbar{
+   padding: 25px 0;
+   background: $color-black;
+   background: linear-gradient(90deg, rgba(3,3,3,1) 0%, rgba(4,4,4,1) 8%, rgba(11,11,11,1) 16%, rgba(15,15,15,1) 32%, rgba(9,9,9,1) 54%, rgba(2,2,2,1) 68%, rgba(6,7,8,1) 72%, rgba(13,16,20,1) 78%);
+
+   @media screen and (max-width:767px) {
+      padding: 10px 0px;
+   }
+
+   .navbar-brand{ 
+      .brand-logo{
+        max-width: 150px;
+      }
+   }
+   .navbar-toggler{
+      background: $color-white;
+   }
+
+
+   .navbar-collapse{
+      .navbar-nav{
+         .nav-item{
+            .nav-link{
+               color: $color-white;
+               font-family: 'Century Gothic Regular';
+               font-size: 15px;
+               line-height: 20px;
+               margin: 0 7px;
+
+               &.active{
+                  color: $color-red;
+               }
+
+               &:hover{
+                  color: $color-red;
+               }
+
+               &.custom-red-button{
+                  padding: 6px 25px;
+                  @media(max-width:1199px) {
+                     max-width: 110px;
+                  }
+
+                  &:hover{
+                     color: $color-white;
+                  }
+               }
+
+               &.cart-btn {
+                  margin-bottom: -20px;
+                  sup {
+                     width: 20px;
+                     height: 20px;
+                     border-radius: 50%;
+                     background: red;
+                     color: #fff;
+                     display: grid;
+                     top: -27px;
+                     right: -15px;
+                     place-items: center;
+                  }
+               }
+            }
+
+            .dropdown-menu{
+               padding: 0;
+               overflow: hidden;
+               background: #1d1d1f;
+               border: 1px solid rgba($color-white, 0.5);
+               border-radius: 10px;
+
+
+               .dropdown-item{
+                  color: $color-white;
+                  font-family: 'Century Gothic Regular';
+                  font-size: 15px;
+                  padding: 7px 15px;
+
+                  &:hover{
+                     background: $color-red;
+                  }
+               }
+
+               li:first-child .dropdown-item {
+                  padding-top: 10px;
+               }
+               li:last-child .dropdown-item {
+                  padding-bottom: 10px;
+               }
+            }
+
+            
+            &.image{
+               @media(max-width:1199px) {
+                  display: none;
+             }
+            }
+         }
+      }
+   }
+}

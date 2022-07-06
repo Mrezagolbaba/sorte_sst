@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard - Stock Sniper Trading</title>
+  <link rel='shortcut icon' href="{% static 'images/nav/fav-icon.png' %}" type='image/x-icon'>
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <!-- header starts -->
+  <header class="header">
+    <nav class="navbar navbar-expand-xl navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img class="img-fluid brand-logo" src="{% static 'images/nav/Icon.png' %}" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto align-items-xl-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Calender
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">1 On 1 Session</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
+                <li><a class="dropdown-item" href="#">Economic Calender</a></li>
+                <li><a class="dropdown-item" href="#">Earning Reports</a></li> -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'all_memberships' %}">Memberships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
+            </li>
+            <li class="nav-item image">
+              <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+            </li>
+            {% endif %}
+          
+            <li class="nav-item">
+              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+  </header>
+  <!-- header ended here -->
+
+
+  <!-- ===//start of dashboard section === -->
+  <section class="dashboard">
+    <div class="main-content">
+      <div class="container">
+        <div class="section-header text-center">
+          <h1 class="section-heading">My Account</h1>
+          <span>dashboard</span>
+          <br>
+          <img class="w-100" src="{% static 'images/membership/dot.png' %}" alt="dott">
+        </div>
+        
+        <div class="section-body">
+          <div class="row">
+            <div class="col-xl-3">
+              <div class="hidden">
+                <button id="menu-show-btn" onclick="menuShow()" class="btn btn-subscribe d-xl-none d-inline">Dashboard Menu</button>
+                <div class="dashboard-side-nav">
+                  <ul>
+                    <li>
+                      <a class="dashboard-item" href="{% url 'dashboard' %}">
+                        <i class="fas fa-home-alt"></i>
+                        <p>Dashboard</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Orders</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-folder"></i>
+                        <p>Memberships</p>
+                      </a>
+                    </li>
+                    <!-- <li>
+                      <a class="dashboard-item" href="view-subscription.html">
+                        <i class="fas fa-home-alt"></i>
+                        <p>Subscriptions</p>
+                      </a>
+                    </li> -->
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-map-marker-check"></i>
+                        <p>Addresses</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-credit-card"></i>
+                        <p>Payment methods</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-user"></i>
+                        <p>Account details</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-home-alt"></i>
+                        <p>Bookings</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fab fa-discord"></i>
+                        <p>Discord</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="{% url 'logout' %}">
+                        <i class="fas fa-power-off"></i>
+                        <p>Logout</p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-xl-9">
+              <!-- dashboard content start here -->
+              <div class="dashboard-content mt-4">
+                <div class="text">
+                  <p>
+                    Hello <span>{{user.username}}</span> (not {{user.first_name}} {{user.last_name}}? <span>Log out</span> ) <br> <br>
+                    From your account dashboard you can view your <span>recent orders</span>,
+                    <br> manage your <span>shipping and billing addresses,</span> and edit your <br>
+                    <span>password and account details.</span>
+                  </p>
+                  <br>
+                  your 1 on 1 sessions:
+                  {% if oneonones %}
+                  {% for o in oneonones %}
+                  <div>
+                  <p>{{o.reservation}}</p>
+                </div>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+              <!-- dashboard content end here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===//end of dashboard section === -->
+
+
+    <!-- === footer section start === -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-lg-6">
+            <div class="logo">
+              <img class="img-fluid" src="{% static 'images/nav/Icon.png' %}" alt="logo">
+            </div>
+            <div class="text">
+              <p>
+                At SST, we will mentor you to become a
+                more consistent and profitable trader, by
+                teaching you technical and fundamental
+                analysis. <br> <br>
+                We start with the basics and teach you
+                step by step how to read and interpret
+                charts, learn various trading strategies, and
+                help understand the psychology behind
+                trading. Take your trading to the next level
+                and join the fast growing sniper team.
+                <br><br>
+      
+                © 2022
+                All Rights Reserved for Stock Sniper Trading
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-4">
+            <div class="navigation-links">
+              <h4>Navigation</h4>
+  
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Calender</a></li>
+                <li><a href="#">Membership</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="{% url 'contact_us' %}">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-8">
+            <div class="contact-info">
+              <h4>Contact Details</h4>
+              <span>Email Address</span>
+              <a href="mailto:stocksnipertrading@gmail.com">stocksnipertrading@gmail.com</a>
+            </div>
+            <div class="social-link">
+              <h4>Stay Connected</h4>
+              <div class="icons">
+                <ul>
+                  <li><a href="#"><img src="{% static 'images/social-links/telegram.png' %}" alt="icon"></a></li>
+                  <li><a href="#"><img src="{% static 'images/social-links/youtube.png' %}" alt="icon"></a></li>
+                  <li><a href="#"><img src="{% static 'images/social-links/insta.png' %}" alt="icon"></a></li>
+                  <li><a href="#"><img src="{% static 'images/social-links/fb.png' %}" alt="icon"></a></li>
+                  <li><a href="#"><img src="{% static 'images/social-links/twitter.png' %}" alt="icon"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ===//end of footer section === -->
+ 
+
+  <!-- ===// Script starts from here -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script>
+  { function menuShow(){
+    const targetNav = document.querySelector('.hidden');
+    
+    if(targetNav.style.height === '100%'){
+      targetNav.style.height = '42px';
+    }else {
+      targetNav.style.height = '100%';
+    }
+
+    }
+  }
+
+  // dropdown menu show/hide on hover start
+  (function () {
+    const dropdown = document.querySelector('.dropdown');
+    const navbarDropdown = document.querySelector('#navbarDropdown');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdown.addEventListener('mouseenter', function(){
+      navbarDropdown.classList.add('show');
+      dropdownMenu.classList.add('show');
+    })
+    dropdown.addEventListener('mouseleave', function(){
+      navbarDropdown.classList.remove('show');
+      dropdownMenu.classList.remove('show');
+    })
+  })();
+  // dropdown menu show/hide on hover end
+  
+  </script>
+  <!-- ===// Script ended here -->
+</body>
+</html>

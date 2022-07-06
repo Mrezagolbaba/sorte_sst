@@ -1,0 +1,17 @@
+.banner{
+   padding: 140px 0px;
+   background: url(../images/banner/banner-bg.png) no-repeat center center/cover;
+   
+   @media screen and (max-width:767px) {
+      padding: 0;
+   }
+   
+
+   .text{
+      p{
+         font-family: 'Century Gothic Regular';
+         font-size: 14px;
+         color: $color-white;
+      }
+   }
+}

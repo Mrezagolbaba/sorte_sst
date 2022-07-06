@@ -1,0 +1,65 @@
+.trading-program{
+   .top-section{
+      background: url(../images/trading-program/bg.png) no-repeat top center/cover;      
+      padding-top: 80px;
+  
+      @media(max-width: 767px) {
+      padding-top: 50px;
+      }
+   }
+
+
+   .bottom-section{
+      background: url(../images/trading-program/btg.png) no-repeat top center/cover; 
+      padding-bottom: 80px;
+  
+      @media(max-width: 767px) {
+      padding-bottom: 50px;
+      }
+
+      .section-header{
+         text-align: left;
+
+         h2{
+            margin: 25px 0;
+            font-family: 'Century Gothic Bold';
+            color: $color-white;
+            font-size: 25px;
+            text-transform: uppercase;
+
+            span{
+               color: $color-white;
+               font-size: 40px;
+            }
+         }
+      }
+
+      .image{
+         position: relative;
+         padding: 30px 0;
+
+         @media(max-width: 991px){
+            padding: 50px 0;
+         }
+         @media(max-width: 767px){
+            padding: 65px 0;
+         }
+
+         .modal{
+
+            .modal-content {
+               border-radius: 1rem;
+            }
+
+            .modal-body {
+               padding-top: 0;
+            }
+
+            .button{
+               position: relative;
+               z-index: 999;
+            }
+         }
+      }
+   }
+}

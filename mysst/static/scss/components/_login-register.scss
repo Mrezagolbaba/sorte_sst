@@ -1,0 +1,52 @@
+.login-register{
+    .form-control {
+        color: #fff !important;
+    }
+
+    .form-body {
+        .form-content{
+            background: url(../images/contact/background-contact.png) no-repeat top center/cover;
+            padding: 60px !important;
+            @media(max-width: 575px){
+                padding: 0px !important;
+            }
+
+            .check-label {
+                color: #fff !important;
+
+                .check-label a {
+                    color: #0093ff !important;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+
+    .form-content input[type=checkbox]:checked + label:after, .form-content input[type=checkbox]:not(:checked) + label:after {
+        content: "\f00c";
+        font-family: "Font Awesome 5 Pro";
+        font-style: normal;
+        font-weight: 600;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        font-size: 9px;
+        color: #0093FF;
+        line-height: 14px;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+
+    .form-body.without-side .form-content input[type=checkbox]:not(:checked) + label:before, .form-body.without-side .form-content input[type=radio]:not(:checked) + label:before {
+        background: transparent;
+        border: 2px solid #fff;
+    }
+
+    .form-body.without-side .form-content input[type=checkbox]:checked + label:before, .form-body.without-side .form-content input[type=radio]:checked + label:before {
+        background: #0093ff;
+        border: 2x solid #0093ff;
+    }
+
+}

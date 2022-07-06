@@ -1,0 +1,102 @@
+// message-form starts
+.message-form{
+   margin: 20px 0;
+   border-radius: 15px;
+   overflow: hidden;
+
+   .form-header{
+      background: $color-ash;
+      padding: 15px 0;
+
+      h3{
+         font-family: 'Century Gothic Regular';
+         font-size: 30px;
+         color: $color-white;
+      }
+   }
+
+   .form-body{
+      padding: 0 30px;
+      background: rgba($color-ash, 0.6);
+      margin-top: 20px;
+      border-bottom-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+
+      .input-item{
+         display: flex;
+         align-items: center;
+         border-bottom: 1px solid $color-ash;
+
+         .input-box{
+            background: transparent;
+            border: none;
+            color: $color-white;
+
+            &:focus{
+               background: rgba($color-black, 0.3);
+            }
+         }
+      }
+
+      .custom-red-button{
+         margin: 35px 0;
+      }
+   }
+}
+// message-form ends
+
+
+// newsletter starts
+.newsletter-form{
+   .form-header{
+      text-align: center;
+      h2{
+         font-family: 'Century Gothic Bold';
+         font-size: 33px;
+         color: $color-white;
+         @media(max-width: 767px) {
+            font-size: 30px;
+         }
+         
+         span{
+            font-family: 'Century Gothic Regular';
+            font-size: 33px;
+            color: $color-white;
+         }
+      }
+   }
+
+   .form-body{
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      border-radius: 40px;
+      background: rgba($color-ash, 0.6);
+      width: 50%;
+
+      @media screen and (max-width: 991px) {
+         width: 100%;           
+      }
+
+      .fa-envelope{
+         margin-left: 25px;
+         color: $color-white;
+         font-size: 25px;
+      }
+
+      .input{
+         background: transparent;
+         border: none;
+         color: $color-white;
+      }
+
+      .btn{
+         margin-right: 20px;
+
+         @media screen and (max-width: 450px) {
+            padding: 10px;        
+         }
+      }
+   }
+}

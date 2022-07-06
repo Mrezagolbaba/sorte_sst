@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>register - Stock Sniper Trading</title>
+  <link rel='shortcut icon' href="{% static 'images/nav/fav-icon.png' %}" type='image/x-icon'>
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/iofrm-login-register/css/iofrm-style.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/iofrm-login-register/css/iofrm-theme29.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- === header section start === -->
+  <header class="header">
+    <nav class="navbar navbar-expand-xl navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img class="img-fluid brand-logo" src="{% static 'images/nav/Icon.png' %}" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto align-items-xl-center">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Calender
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'oneonone' %}">1 On 1 Session</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
+                <li><a class="dropdown-item" href="#">Economic Calender</a></li>
+                <li><a class="dropdown-item" href="#">Earning Reports</a></li> -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'membership' %}">Memberships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'education' %}">Sniper Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store' %}">Store</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'contacts' %}">Contact</a>
+            </li>
+            <li class="nav-item image">
+              <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <!-- <a  href="register.html" class="nav-link btn custom-red-button">Join Us</a> -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+  </header>
+  <!-- ===//end of header section === -->
+ 
+
+
+  <!-- === login-register section start === -->
+  <section class="login-register">
+    <div class="form-body without-side">
+      <div class="row">
+          <div class="form-holder">
+              <div class="form-content">
+                  <div class="form-items">
+                      <h3>Register new account</h3>
+                      <p>Get access to all our Educational content and more.</p>
+                      <form action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                          <input class="form-control" type="text" name=username placeholder="Username" required>
+                          <input class="form-control" type="text" name=first_name placeholder="First Name" required>
+                          <input class="form-control" type="text" name=last_name placeholder="Last Name" required>
+                          <!-- <input class="form-control" type="text" placeholder="Street Address" required> -->
+                          <!-- <input class="form-control" type="text" placeholder="Contry" required> -->
+                          <!-- <input class="form-control" type="text" placeholder="Town/City" required> -->
+                          <!-- <input class="form-control" type="text" placeholder="Postcode/Zip" required> -->
+                          <!-- <input class="form-control" type="text" placeholder="Phone" required> -->
+                          <input class="form-control" type="email" name=email placeholder="E-mail Address" required>
+						  <!-- <input class="form-control" type="text" placeholder="Discord ID/Email" required> -->
+                          <input class="form-control" type="password" name=password placeholder="Password" required>
+                          <input class="form-control" type="password" name=password2 placeholder="Confirm password" required>
+                          <input type="checkbox" id="chk1" required><label class="check-label" for="chk1">I agree on <a href="#">terms & conditions</a> of Stock Sniper Trading</label>
+
+                          <div class="form-button mt-4">
+                              <button id="submit" type="submit" class="ibtn">Register</button>
+                          </div>
+                      </form>
+					  <p></p>
+                      <div class="page-links">
+                          <a href="{% url 'login' %}">Login to account</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===//end of login-register section === -->
+
+  
+
+  <!-- === footer section start === -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-lg-6">
+          <div class="logo">
+            <img class="img-fluid" src="{% static 'images/nav/Icon.png' %}" alt="logo">
+          </div>
+          <div class="text">
+            <p>
+              At SST, we will mentor you to become a
+              more consistent and profitable trader, by
+              teaching you technical and fundamental
+              analysis. <br> <br>
+              We start with the basics and teach you
+              step by step how to read and interpret
+              charts, learn various trading strategies, and
+              help understand the psychology behind
+              trading. Take your trading to the next level
+              and join the fast growing sniper team.
+              <br><br>
+    
+              © 2022
+              All Rights Reserved for Stock Sniper Trading
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-4">
+          <div class="navigation-links">
+            <h4>Navigation</h4>
+
+            <ul>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <!-- <li><a href="#">About Us</a></li> -->
+              <li><a href="{% url 'oneonone' %}">Calender</a></li>
+              <li><a href="{% url 'membership' %}">Membership</a></li>
+              <li><a href="{% url 'store' %}">Store</a></li>
+              <li><a href="{% url 'contacts' %}">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-8">
+          <div class="contact-info">
+            <h4>Contact Details</h4>
+            <span>Email Address</span>
+            <a href="mailto:stocksnipertrading@gmail.com">stocksnipertrading@gmail.com</a>
+          </div>
+          <div class="social-link">
+            <h4>Stay Connected</h4>
+            <div class="icons">
+              <ul>
+                <li><a href="#"><img src="{% static 'images/social-links/telegram.png' %}" alt="icon"></a></li>
+                <li><a href="https://www.youtube.com/c/StockSniperTrading" target="_blank"><img src="{% static 'images/social-links/youtube.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/insta.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/fb.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/twitter.png' %}" alt="icon"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ===//end of footer section === -->
+  
+
+
+  <script src="{% static 'vendor/iofrm-login-register/js/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/iofrm-login-register/js/main.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script>
+    // dropdown menu show/hide on hover start
+    (function () {
+      const dropdown = document.querySelector('.dropdown');
+      const navbarDropdown = document.querySelector('#navbarDropdown');
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+
+      dropdown.addEventListener('mouseenter', function(){
+        navbarDropdown.classList.add('show');
+        dropdownMenu.classList.add('show');
+      })
+      dropdown.addEventListener('mouseleave', function(){
+        navbarDropdown.classList.remove('show');
+        dropdownMenu.classList.remove('show');
+      })
+    })();
+    // dropdown menu show/hide on hover end
+  </script>
+</body>
+</html>

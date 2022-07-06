@@ -1,0 +1,30 @@
+/*=== abstracts css start === */
+@import 'abstracts/fonts';
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+/*===// end of abstracts css === */
+
+/*=== base css start === */
+@import 'base/global';
+@import 'base/config';
+@import 'base/utility';
+/*===// end of base css === */
+
+/*=== components css start === */
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/banner';
+@import 'components/market-trading-session';
+@import 'components/membership';
+@import 'components/trading-program';
+@import 'components/contact';
+@import 'components/social-network';
+@import 'components/dashboard';
+@import 'components/login-register';
+/*===// end of components css === */
+
+/*=== layouts css start === */
+@import 'layouts/navbar';
+@import 'layouts/footer';
+/*===// end of layouts css === */

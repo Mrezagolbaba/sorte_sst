@@ -1,0 +1,81 @@
+.dashboard{
+   background: url(../images/dashboard/dashboard-bg.png) no-repeat center center/cover;
+   padding: 80px 0;
+      @media(max-width: 767px){
+        padding-top: 50px 0;
+      }
+
+   .main-content{
+  
+      .section-header{
+         h1{
+            font-family: 'Century Gothic Bold';
+            font-size: 40px;
+            text-transform: uppercase;
+         }
+   
+         span{
+            font-family: 'Century Gothic Regular';
+            font-size: 25px;
+            text-transform: uppercase;
+         }
+      }
+      
+      .section-body{
+         .dashboard-side-nav{
+            background: #1d1d1f;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 5px;
+   
+            ul{
+               border-bottom: 4px solid #af0e0e;
+               li{
+                  .dashboard-item{
+                     color: $color-white;
+                     padding: 7px 10px;
+                     display: flex;
+                     align-items: center;
+                     border-bottom: 1px solid #262628;
+                  
+                     i{
+                        font-size: 20px;
+                        padding: 10px;
+                     }
+   
+                     p{
+                        padding-left: 10px;
+                        font-family: 'Century Gothic Regular';
+                        font-size: 15px;
+                     }
+                  }
+   
+                  &:hover{
+                     background: $color-black;
+                  }
+               }
+            }
+         }
+   
+         .text{
+            font-family: 'Century Gothic Regular';
+            font-size: 15px;
+            color: $color-white;
+   
+            span{
+               font-family: 'Century Gothic Bold';
+               font-size: 15px;
+            }
+         }
+   
+         // dashboard nav show hidden
+         .hidden{
+            @media(max-width: 1199px){
+               height: 42px;
+               overflow: hidden;
+               transition: all 0.2s linear;
+            }
+         }
+      }
+   }
+}

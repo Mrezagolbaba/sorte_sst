@@ -1,0 +1,350 @@
+@charset "UTF-8";
+/* Courses CSS */
+
+
+.left_sidebar {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	top: 0;
+}
+.left_sidebar .close_icon {
+	background: #B30000;
+	padding: 10px 19px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.left_sidebar .close_icon a {
+	color: #fff;
+	font-size: 15px;
+}
+.left_sidebar .close_icon img {
+	width: 20px;
+	margin-right: 15px;
+}
+.left_sidebar .close_icon p {
+	font-size: 15px;
+}
+.left_sidebar .close_icon p button {
+	border: none;
+	background: none;
+	color: #fff;
+	padding: 5px 10px;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	margin-left: 15px;
+}
+.left_sidebar .close_icon p button img {
+	margin-right: 5px;
+	width: 13px;
+}
+.left_sidebar .sidebar_item {
+     background-color: #292a2c;
+     width: 60px;
+     overflow: hidden;
+     transition: width 0.5s;
+     position: relative;
+     z-index: 99;
+}
+.left_sidebar .sidebar_item a {
+     color: #fff;
+     display: flex;
+     align-items: center;
+}
+.left_sidebar .sidebar_item a img {
+	width: 22px;
+	height: 22px;
+	object-fit: contain;
+}
+.left_sidebar .sidebar_item i {
+     font-size: 24px;
+}
+.left_sidebar .sidebar_item span {
+	font-size: 14px;
+	white-space: nowrap;
+	font-family: 'Century Gothic Regular';
+	opacity: 0;
+	visibility: hidden;
+	margin-left: 10px;
+}
+.left_sidebar .sidebar_item:hover span {
+     opacity: 1;
+     visibility: visible;
+}
+.left_sidebar .sidebar_item .sidebar_single_item {
+	border-radius: 0;
+	padding: 10px 19px;
+}
+.left_sidebar .sidebar_item .sidebar_single_item:hover {
+     background-color: #009fff;
+}
+.left_sidebar .sidebar_item:hover {
+     width: 420px;
+}
+.left_sidebar .sidebar_single_item {
+     font-size: 14px;
+}
+.left_sidebar .sidebar_single_item {
+     background-color: transparent;
+     border: none;
+     border-radius: 0;
+}
+
+
+.int_forex_area {
+	font-family: 'Century Gothic Regular';
+}
+.int_forex_area .forex_title {
+	text-align: center;
+	margin-bottom: 40px;
+}
+.int_forex_area .forex_title h1 {
+	font-family: 'Century Gothic Bold';
+	color: #fff;
+}
+.int_forex_area .forex_tag {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+}
+.int_forex_area .forex_tag li {
+	color: gray;
+	padding-right: 10px;
+	font-size: 14px;
+}
+.int_forex_area .forex_tag li a {
+	color: #ddd;
+}
+
+
+.forex_left {}
+.forex_left .forex_left_img {}
+.forex_left .forex_left_img img {
+	width: 100%;
+}
+
+
+
+/*Tabs*/
+.forex_tabs {
+  margin-top: 50px;
+}
+.forex_tabs input {
+  display: none;
+}
+.forex_tabs label {
+	display: inline-block;
+	padding: 6px 0 6px 0;
+	text-align: center;
+	padding: 10px 20px;
+	font-size: 14px;
+	color: gray;
+}
+.forex_tabs label:hover {
+  cursor: pointer;
+}
+.forex_tabs input:checked + label {
+	border-bottom: 1px solid #B30000;
+	color: #B30000;
+}
+.forex_tabs #forex_tab1:checked ~ .forext_tab_content #forex_content1,
+.forex_tabs #forex_tab2:checked ~ .forext_tab_content #forex_content2,
+.forex_tabs #forex_tab3:checked ~ .forext_tab_content #forex_content3,
+.forex_tabs #forex_tab4:checked ~ .forext_tab_content #f4rex_content4 {
+  display: block;
+}
+.forex_tabs .forext_tab_content > div {
+  display: none;
+  padding-top: 25px;
+  text-align: left;
+  /*height: 192px;*/
+  overflow: auto;
+}
+.forext_tab_content {
+	border-top: 1px solid gray;
+	margin-top: -1px;
+}
+.forext_tab_content h1 {
+	font-size: 16px;
+	font-family: 'Century Gothic Bold';
+}
+.forext_tab_content ul {
+	margin-top: 15px;
+}
+.forext_tab_content ul li {
+	font-size: 13px;
+	color: #fff;
+	padding: 2px 0px;
+}
+.forext_tab_content ul li img {
+	width: 13px;
+	height: 13px;
+	object-fit: cover;
+	margin-right: 7px;
+}
+
+
+
+
+
+.forex_right {}
+.forex_right p {
+	display: inline-flex;
+	align-items: center;
+	color: #ddd;
+	font-size: 14px;
+}
+.forex_right p img {
+	width: 15px;
+	margin-right: 6px;
+}
+.forex_right .forex_progress {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+.forex_right .forex_progress p {
+	color: #fff;
+}
+.forex_right .forex_progress ul {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+.forex_right .forex_progress ul li {
+	font-size: 14px;
+	color: #fff;
+}
+.forex_progress_bg {
+	width: 100%;
+	height: 6px;
+	background: #fff;
+	display: block;
+	border-radius: 10px;
+}
+.forex_progress_percent {
+	display: block;
+	background: #B30000;
+	height: 6px;
+	border-radius: 10px;
+}
+
+.forex_box {
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+.forex_box_top {
+	padding: 25px 20px;
+	border-bottom: 2px solid gray;
+}
+.forex_box_top a {
+	display: block;
+	background: #B30000;
+	text-align: center;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 15px;
+}
+.forex_box_top .forex_complete {
+	background: #fff;
+	color: #777;
+	padding: 10px 20px;
+	border-radius: 10px;
+	border: 1px solid #FFB400;
+	margin: 0px;
+	margin-top: 25px;
+	margin-bottom: 15px;
+	display: flex;
+}
+.forex_box_top .forex_complete img {
+	width: 25px;
+}
+.forex_box_top .forex_enrolled {
+	align-items: flex-start;
+}
+.forex_box_top .forex_enrolled img {
+	width: 20px;
+}
+.forex_box_top .forex_enrolled b {
+
+}
+.forex_box_bottom {
+	padding: 25px 20px;
+}
+.forex_box_bottom table {
+	width: 100%;
+}
+.forex_box_bottom table tr {
+	display: flex;
+}
+.forex_box_bottom table tr td {
+	border: none;
+	font-size: 14px;
+	width: 50%;
+	padding: 6px 0px;
+}
+.forex_box_bottom table tr td img {
+	width: 14px;
+	height: 14px;
+	object-fit: contain;
+	margin-right: 8px;
+}
+
+@media all and (max-width:  1200px) {
+	.forex_right {
+	padding-top: 50px;
+}
+@media all and (max-width:  767px) {
+	.left_sidebar .close_icon {
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
+}
+.left_sidebar .close_icon p button {
+	padding: 5px 5px;
+	font-size: 12px;
+}
+.left_sidebar .close_icon p {
+	font-size: 12px;
+}
+.left_sidebar .close_icon img {
+	width: 16px;
+	margin-right: 10px;
+}
+.left_sidebar .close_icon a {
+	font-size: 12px;
+}
+.left_sidebar .close_icon p button img {
+	margin-right: 3px;
+	width: 10px;
+}
+}
+}
+@media all and (max-width:  576px) {
+	.left_sidebar .close_icon img {
+	width: 22px;
+}
+	.left_sidebar .sidebar_item {
+	width: 65px;
+}
+	.left_sidebar .sidebar_item:hover {
+	width: 100%;
+}
+.left_sidebar .sidebar_item span {
+	font-size: 13px;
+}
+.left_sidebar .sidebar_item a img {
+	width: 26px;
+	height: 26px;
+}
+.left_sidebar .sidebar_item .sidebar_single_item {
+	padding: 7px 19px;
+}
+.forex_box_top, .forex_box_bottom {
+	padding: 20px 10px;
+}
+}
