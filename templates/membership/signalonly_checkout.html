@@ -98,7 +98,7 @@
 		<p>
 		
 		<div class="table100 ver5 m-b-110">
-<form action="selected_package" method="POST">
+<form action="save_selected_package" method="POST">
   {% csrf_token %}
       <table data-vertable="ver5">
 <thead>
@@ -117,7 +117,7 @@
 
   <tr class="row100">
 <!-- <td class="column100 column1" data-column="column1"><img src="{% static 'images/delete-order.png' %}" alt="delete"></td> -->
-<td class="column100 column2" data-column="column2"><input type="text"  style="background-color: transparent; color:white; display: block; width: 100%;height: 100%;" name="title" id="title" value={{ p.title }}>&nbsp;</td>
+<td class="column100 column2" data-column="column2"><input type="text"  style="background-color: transparent; color:white; display: block; width: 100%;height: 100%;" name="title" id="title" value="{{ p.title }}">&nbsp;</td>
 <td class="column100 column3" data-column="column3"><input type="text"  style="background-color: transparent; color:white; display: block; width: 100%;height: 100%;" name="price" id="price" value="${{ p.price }} /Monthly">&nbsp; </td>
 <td class="column100 column4" data-column="column4">1&nbsp;</td>
 <!-- <td class="column100 column5" data-column="column5">$49.99 / month</td> -->
