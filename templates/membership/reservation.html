@@ -31,14 +31,14 @@
                 Calender
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{% url 'oneonone_reservation' %}">1 On 1 Session</a></li>
+                <li><a class="dropdown-item" href="#">1 On 1 Session</a></li>
                 <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
                 <li><a class="dropdown-item" href="#">Economic Calender</a></li>
                 <li><a class="dropdown-item" href="#">Earning Reports</a></li> -->
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Memberships</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'all_memberships' %}">Memberships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
@@ -47,7 +47,7 @@
               <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'contact_us' %}">Contact</a>
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
             </li>
             <li class="nav-item image">
               <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
@@ -59,18 +59,21 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
             </li>
+            <li class="nav-item">
+              <a  href="{% url 'dashboard' %}" class="nav-link btn custom-red-button">{{user.username}}</a>
+            </li>
             {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+              <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
             {% endif %}
+          
 
-            <li class="nav-item">
-              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
-            </li>
+            
+            
           </ul>
         </div>
       </div>  
@@ -80,63 +83,53 @@
  
 
 
-  <!-- === contact section start === -->
-  <section cl ass="contact">
+
+  <!-- === membership program start === -->
+<!-- post start  -->
+<!-- <h1>{{user.username}}</h1> -->
+{% if reservables %}
+{% for reservable in reservables %}
+  <section class="membership-program">
     <div class="container">
       <div class="section-header text-center">
-        <h2 class="section-heading">get in touch</h2>
+        <h2 class="section-heading pb-2">{{reservable.user}}</h2>
+        <p>Starts at:{{reservable.reserved_start_date}}</p>
+        <p>ends at:{{reservable.reserved_end_date}}</p>
+        <!-- <p>users:{{reservable.free_users}} - One on one session id:{{reservable.id}}</p> -->
+        <!-- <p>users:{{reservable.id}} - {{reservable.id}}</p> -->
+       
+        <a href="{% url 'reservationdetail' reservable.id%}" >read-more</a>
       </div>
-      <div class="message-form pb-2 text-center">
-        <form action="message-sent" method="post">
-          {% csrf_token %}
-          <div class="form-header">
-            <h3>Any questions or quires, feel free to drop us a message.</h3>
-          </div>
-          <div class="form-body">
-            <div class="row g-4">
-              <!-- name input started -->
-              <div class="col-md-4">
-                <div class="form-floating input-item">
-                  <input type="text" class="form-control input-box" id="full_name" placeholder="Your Name" name="full_name" value="{{user.first_name}} {{user.last_name}}" readonly>
-                  <label for="name"><i class="fas fa-user"></i> Your Name </label>
-                </div>
-              </div>
-              <!-- name input ended -->
-
-              <!-- email input started -->
-              <div class="col-md-4">
-                <div class="form-floating input-item">
-                  <input type="email" class="form-control input-box" id="email" placeholder="Your Email Address" name="email" value="{{user.email}}" readonly>
-                  <label for="email"><i class="fas fa-envelope"></i> Email </label>
-                </div>
-              </div>
-              <!-- email input ended -->
-
-              <!-- phone input started -->
-              <div class="col-md-4">
-                <div class="form-floating input-item">
-                  <input type="text" class="form-control input-box" id="number" placeholder="Your Number" name="number">
-                  <label for="phone-number"><i class="fas fa-mobile-alt"></i> Your Number</label>
-                </div>
-              </div>
-              <!-- phone input ended -->
-
-              <!-- text area -->
-              <div class="col-12">
-                <div class="input-item">
-                    <label class="text-nowrap mt-4 ps-2" for="textarea"><i class="fas fa-comment-alt-dots" ></i> Your Message </label>
-                </div>
-                <div class="input-item">
-                  <textarea class="pb-3 form-control input-box" name="message" id="message" placeholder=""></textarea>
-                </div>
-              </div>
-            </div>
-            <!-- text area ended--> 
-
-            <input type="submit" value="Send Message" class="btn custom-red-button text-center">
-          </div>
-        </form>
+  
+      <div class="devider text-center">
+        <img class="img-fluid w-100" src="{% static 'images/membership/dot.png' %}" alt="dots">
       </div>
+		
+		<div id="spacer"></div>
+    
+    </div>
+  </section>
+  {% endfor %}
+  {% else %}
+  <section class="membership-program">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-heading pb-2">There is no free session</h2>
+        <h3>We will announce new sessions in a bit</h3>
+        <br>  
+        <h4>Wait for us...</h4>
+        <!-- <p>users:{{reservable.id}} - {{reservable.id}}</p> -->
+ 
+      </div>
+  
+  {% endif %}
+<!-- post ends here -->
+  <!-- ===//end of membership program === -->
+ 
+
+  <!-- === contact section start === -->
+  <section class="contact">
+    <div class="container">
 
       <div class="newsletter-form pt-5">
         <div class="form-header">
@@ -144,13 +137,11 @@
             <span>and Stay up to date with all events coming straight:</span> </h2>
         </div>
         <div class="pt-3">
-          <form class="form-control form-body rounded-pill m-auto" action="subscriber" method="POST">
-            {% csrf_token %}
-            <i class="fas fa-envelope"></i>
-            <input class="input form-control" type="email" name="email" placeholder="Your Email Address">
-            <button type="submit" class="btn btn-subscribe">Subscribe</button>
-            <!-- <input type="submit" value="Send Message" class="btn custom-red-button text-center"> -->
-          </form>
+            <form class="form-control form-body rounded-pill m-auto" action="#" method="Post">
+              <i class="fas fa-envelope"></i>
+              <input class="input form-control" type="email" name="text" placeholder="Your Email Address">
+              <button type="button" class="btn btn-subscribe">Subscribe</button>
+            </form>
         </div>
       </div>
     </div>
@@ -244,7 +235,7 @@
             <a href="#">
               <div class="social-net-link">
                 <div class="icon">
-                  <img class="img-fluid" src="{% static 'images/social-links/discord.png' %}" alt="social-net-link">  
+                  <img class="img-fluid" src="{% static 'mages/social-links/discord.png' %}" alt="social-net-link">  
                 </div>
                 <div class="text">
                   <p>discord</p>                  
@@ -292,7 +283,7 @@
 
             <ul>
               <li><a href="#">Home</a></li>
-              <!-- <li><a href="#">About Us</a></li> -->
+              <li><a href="#">About Us</a></li>
               <li><a href="#">Calender</a></li>
               <li><a href="#">Membership</a></li>
               <li><a href="#">Store</a></li>

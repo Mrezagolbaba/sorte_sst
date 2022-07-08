@@ -38,7 +38,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Memberships</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'all_memberships' %}">Memberships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
@@ -47,7 +47,7 @@
               <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'contact_us' %}">Contact</a>
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
             </li>
             <li class="nav-item image">
               <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
@@ -64,10 +64,10 @@
               <a class="nav-link" href="{% url 'login' %}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+              <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
             {% endif %}
-
+          
             <li class="nav-item">
               <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
             </li>
@@ -80,63 +80,55 @@
  
 
 
+
+  <!-- === membership program start === -->
+<!-- post start  -->
+{% if live_oneonone %}
+    <!-- <h1>{{user.username}}</h1> -->
+    
+      <section class="membership-program">
+        <div class="container">
+          <div class="section-header text-center">
+            <h2 class="section-heading pb-2">{{lives.user}}</h2>
+            <p>Starts at:{{live_oneonone.reserved_start_date}}</p>
+            <p>ends at:{{live_oneonone.reserved_end_date}}</p>
+            <p>users:{{live_oneonone.free_users}} - One on one session id:{{live_oneonone.id}}</p>
+            <p>Status: {{live_oneonone.status}}</p>
+            <!-- <p>users:{{live_oneonone.id}} - {{live_oneonone.id}}</p> -->
+            <br>
+            <a href="{% url 'reserved' live_oneonone.id %}">Reserveeee</a>
+            <!-- <button type="submit" class="btn btn-subscribe">reserve</button> -->
+          </div>
+          {% endif %}
+          <div class="devider text-center">
+            <img class="img-fluid w-100" src="{% static 'images/membership/dot.png' %}" alt="dots">
+          </div>
+        <div class="container">
+            <div class="newsletter-form pt-5">
+              <div class="form-header">
+          {% if messages %}
+          <!-- <ul class="messages" > -->
+            <ul align="center">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"  {% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+          {% endif %}
+          </div>
+          </div>
+        </div>
+        <div id="spacer"></div>
+        
+        </div>
+      </section>
+
+<!-- post ends here -->
+  <!-- ===//end of membership program === -->
+ 
+
   <!-- === contact section start === -->
-  <section cl ass="contact">
+  <section class="contact">
     <div class="container">
-      <div class="section-header text-center">
-        <h2 class="section-heading">get in touch</h2>
-      </div>
-      <div class="message-form pb-2 text-center">
-        <form action="message-sent" method="post">
-          {% csrf_token %}
-          <div class="form-header">
-            <h3>Any questions or quires, feel free to drop us a message.</h3>
-          </div>
-          <div class="form-body">
-            <div class="row g-4">
-              <!-- name input started -->
-              <div class="col-md-4">
-                <div class="form-floating input-item">
-                  <input type="text" class="form-control input-box" id="full_name" placeholder="Your Name" name="full_name" value="{{user.first_name}} {{user.last_name}}" readonly>
-                  <label for="name"><i class="fas fa-user"></i> Your Name </label>
-                </div>
-              </div>
-              <!-- name input ended -->
-
-              <!-- email input started -->
-              <div class="col-md-4">
-                <div class="form-floating input-item">
-                  <input type="email" class="form-control input-box" id="email" placeholder="Your Email Address" name="email" value="{{user.email}}" readonly>
-                  <label for="email"><i class="fas fa-envelope"></i> Email </label>
-                </div>
-              </div>
-              <!-- email input ended -->
-
-              <!-- phone input started -->
-              <div class="col-md-4">
-                <div class="form-floating input-item">
-                  <input type="text" class="form-control input-box" id="number" placeholder="Your Number" name="number">
-                  <label for="phone-number"><i class="fas fa-mobile-alt"></i> Your Number</label>
-                </div>
-              </div>
-              <!-- phone input ended -->
-
-              <!-- text area -->
-              <div class="col-12">
-                <div class="input-item">
-                    <label class="text-nowrap mt-4 ps-2" for="textarea"><i class="fas fa-comment-alt-dots" ></i> Your Message </label>
-                </div>
-                <div class="input-item">
-                  <textarea class="pb-3 form-control input-box" name="message" id="message" placeholder=""></textarea>
-                </div>
-              </div>
-            </div>
-            <!-- text area ended--> 
-
-            <input type="submit" value="Send Message" class="btn custom-red-button text-center">
-          </div>
-        </form>
-      </div>
 
       <div class="newsletter-form pt-5">
         <div class="form-header">
@@ -144,13 +136,11 @@
             <span>and Stay up to date with all events coming straight:</span> </h2>
         </div>
         <div class="pt-3">
-          <form class="form-control form-body rounded-pill m-auto" action="subscriber" method="POST">
-            {% csrf_token %}
-            <i class="fas fa-envelope"></i>
-            <input class="input form-control" type="email" name="email" placeholder="Your Email Address">
-            <button type="submit" class="btn btn-subscribe">Subscribe</button>
-            <!-- <input type="submit" value="Send Message" class="btn custom-red-button text-center"> -->
-          </form>
+            <form class="form-control form-body rounded-pill m-auto" action="#" method="Post">
+              <i class="fas fa-envelope"></i>
+              <input class="input form-control" type="email" name="text" placeholder="Your Email Address">
+              <button type="button" class="btn btn-subscribe">Subscribe</button>
+            </form>
         </div>
       </div>
     </div>
@@ -244,7 +234,7 @@
             <a href="#">
               <div class="social-net-link">
                 <div class="icon">
-                  <img class="img-fluid" src="{% static 'images/social-links/discord.png' %}" alt="social-net-link">  
+                  <img class="img-fluid" src="{% static 'mages/social-links/discord.png' %}" alt="social-net-link">  
                 </div>
                 <div class="text">
                   <p>discord</p>                  
@@ -292,7 +282,7 @@
 
             <ul>
               <li><a href="#">Home</a></li>
-              <!-- <li><a href="#">About Us</a></li> -->
+              <li><a href="#">About Us</a></li>
               <li><a href="#">Calender</a></li>
               <li><a href="#">Membership</a></li>
               <li><a href="#">Store</a></li>
