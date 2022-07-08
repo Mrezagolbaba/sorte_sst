@@ -12,4 +12,7 @@ urlpatterns = [
     path('lifetime_checkout', lifetime_checkout, name='lifetime_checkout'),
     path('signal_checkout', signalonly_checkout, name='signal_checkout'),
     path('save_selected_package', save_selected_package, name='save_selected_package'),
+    path('oneonone_reservation', oneonone_reservation, name='oneonone_reservation'),
+    path('reservation-detail/<int:session_id>', oneonone_reservation_detail, name='reservationdetail'),
+    path('reserved/<int:session_id>', oneonone_make_reservation, name='reserved'),
     ]
