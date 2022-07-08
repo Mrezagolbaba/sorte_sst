@@ -1,6 +1,7 @@
+from multiprocessing import context
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Packages, SelectedPackage, Reservation, LiveSession
+from .models import Packages, SelectedPackage, Reservation, LiveSession, Tradeidea
 import re
 from django.contrib import messages
 
@@ -52,6 +53,13 @@ def signalonly_checkout(request):
     }
     return render(request, 'membership/signalonly_checkout.html', context)
 
+
+def trade_idea(request):
+    ideas = Tradeidea.objects.all().order_by('-id')
+    context = {
+        'ideas':ideas
+    }
+    return render(request, 'membership/tradeidea.html', context)
 
 
 
