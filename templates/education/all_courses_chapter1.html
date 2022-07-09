@@ -89,7 +89,7 @@
 
     <div class="left_sidebar">
       <div class="close_icon">
-        <a href="####"><img src="{% static 'images/sidebar/delete-order.png' %}" alt="icon">Courses</a><br>
+        <a href="####"><img src="{% static 'images/sidebar/delete-order.png' %}" alt="icon">Introduction to forex</a><br>
         <br>
         <p>Your progress: <b>0</b> of <b>10</b> (0%) <button><img src="{% static 'images/sidebar/check.png' %}" alt="icon"> Mark as Complete</button></p>
       </div>
@@ -99,17 +99,22 @@
         {% for crs in courses %}  
         <li class="sidebar_single_item">
     
-          <a href="##"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{crs.title}} --- {{crs.status}} </span></a>
+          <a href="##"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{crs.chapter}} --- {{crs.title}} </span></a>
           
-
           <!-- <a href="#"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{crs.lesson}}</span></a> -->
         </li>
-        
-      
+        {% endfor %}
+        {% if lessons %}
+        {% for lesson in lessons %}
+        <li class="sidebar_single_item">
+          <a href="##"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{lesson.title}} </span></a>
+        </li>
+        {% endfor %}
+      {% endif %}
          <!-- <li class="sidebar_single_item">
           <a href="quiz-1.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>{{crs.quiz}}</span></a>
         </li> -->
-        {% endfor %}
+      
        
         <!-- <li class="sidebar_single_item">
           <a href="quiz-1.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
