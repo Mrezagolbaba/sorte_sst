@@ -95,11 +95,11 @@
       </div>
       
       <ul class="sidebar_item">
-        
+    
         {% for crs in courses %}  
         <li class="sidebar_single_item">
     
-          <a href="##"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{crs.chapter}} --- {{crs.title}} </span></a>
+          <a href="#"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>Course title: {{crs.title}} </span></a>
           
           <!-- <a href="#"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{crs.lesson}}</span></a> -->
         </li>
@@ -107,7 +107,7 @@
         {% if lessons %}
         {% for lesson in lessons %}
         <li class="sidebar_single_item">
-          <a href="##"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{lesson.title}} </span></a>
+          <a href="{% url 'lesson_detail' lesson.id %}"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{lesson.number}}-{{lesson.title}} </span></a>
         </li>
         {% endfor %}
       {% endif %}
