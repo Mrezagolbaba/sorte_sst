@@ -10,7 +10,7 @@ def sniper_education(request):
 def introduction(request):
     return render(request, 'education/introduction.html')
 
-def all_courses(request):
+def all_courses_ch1(request):
     courses = CourseModel.objects.all().filter(chapter=1)
     lessons = LessonModel.objects.all().filter(chapter=1)
     context = {
@@ -25,11 +25,13 @@ def course_detail(request, course_id):
     context = {
         'main_course': main_course
     }
-    return render(request, 'education/.html', context)
+    return render(request, 'education/lesson-template.html', context)
 
 
 def lesson_detail(request, lesson_id):
     main_lesson = get_object_or_404(LessonModel, id=lesson_id)
     context = {
+        'main_lesson': main_lesson
 
     }
+    return render(request, 'education/lesson-template.html', context)
