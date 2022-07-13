@@ -1,3 +1,4 @@
+from tokenize import blank_re
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -48,6 +49,8 @@ class LessonModel(models.Model):
     user = models.ForeignKey(auth_user, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField()
+    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/', null=True, blank=True)
+    video = models.FileField(upload_to='videos/%Y/%m/%d/', null=True, blank=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,null=True,blank=True)
     number = models.IntegerField(default=1)
 
