@@ -103,12 +103,18 @@
           
           <!-- <a href="#"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{crs.lesson}}</span></a> -->
         </li>
+
         {% endfor %}
         {% if lessons %}
         {% for lesson in lessons %}
         <li class="sidebar_single_item">
           <a href="{% url 'lesson_detail' lesson.id %}"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>{{lesson.number}}-{{lesson.title}} </span></a>
         </li>
+        {% if lesson.quiz != None %}
+        <li class="sidebar_single_item">
+          <a href="{% url 'quiz-detail' lesson.quiz.id %}"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>{{lesson.quiz}}</span></a>
+        </li> 
+        {% endif %}
         {% endfor %}
       {% endif %}
          <!-- <li class="sidebar_single_item">

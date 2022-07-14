@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
   <!-- header starts -->
@@ -63,7 +64,7 @@
               <a class="nav-link" href="{% url 'login' %}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+              <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
             {% endif %}
           
@@ -84,7 +85,7 @@
       <div class="container">
         <div class="section-header text-center">
           <h1 class="section-heading">My Account</h1>
-          <span>dashboard</span>
+          <span>memberships</span>
           <br>
           <img class="w-100" src="{% static 'images/membership/dot.png' %}" alt="dott">
         </div>
@@ -94,7 +95,7 @@
             <div class="col-xl-3">
               <div class="hidden">
                 <button id="menu-show-btn" onclick="menuShow()" class="btn btn-subscribe d-xl-none d-inline">Dashboard Menu</button>
-                <div class="dashboard-side-nav">
+               <div class="dashboard-side-nav">
                   <ul>
                     <li>
                       <a class="dashboard-item" href="{% url 'dashboard' %}">
@@ -132,12 +133,7 @@
                         <p>Payment methods</p>
                       </a>
                     </li>
-                      <!-- <li>
-                        <a class="dashboard-item" href="#">
-                          <i class="fas fa-user"></i>
-                          <p>Account details</p>
-                        </a>
-                      </li> -->
+                  
                     <li>
                       <a class="dashboard-item" href="{% url 'bookings' %}">
                         <i class="fas fa-home-alt"></i>
@@ -160,26 +156,72 @@
                 </div>
               </div>
             </div>
-  
+           
             <div class="col-xl-9">
               <!-- dashboard content start here -->
               <div class="dashboard-content mt-4">
+                
                 <div class="text">
+                  
                   <p>
-                    Hello <span>{{user.username}}</span> (not {{user.first_name}} {{user.last_name}}? <span>Log out</span> ) <br> <br>
-                    From your account dashboard you can view your <span>recent orders</span>,
-                    <br> manage your <span>shipping and billing addresses,</span> and edit your <br>
-                    <span>password and account details.</span>
+                    {% if membership %}
+                    {% for info in membership%}   
+                    <table class="subscription_details">
+
+                      <tbody>
+		<tr>
+			<td>Package</td>
+			<td>{{info.title}}</td>
+		</tr>
+				<tr>
+					<td>status</td>
+					<td>{{info.status}}</td>
+				</tr>
+        <tr>
+					<td>Start date</td>
+					<td>{{info.start_date}}</td>
+				</tr>
+																							<tr>
+					<td>Next payment date</td>
+					<td>value goes here</td>
+				</tr>
+															<tr>
+					<td>End date</td>
+					<td>{{info.end_date}}</td>
+				</tr>
+																				<tr>
+				<!-- <td>Auto renew</td> -->
+				<!-- <td>
+					<label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label>
+				</td> -->
+			</tr>
+									<tr>
+				<td>Payment</td>
+				<td>
+					<span data-is_manual="yes" class="subscription-payment-method">{{info.payment}}</span>
+				</td>
+			</tr>
+											<tr>
+				<td>Actions</td>
+				<td>
+					<div class="button">
+                      <a href="#" class="btndash custom-red-button ">Cancel</a>
+						<a href="#" class="btndash custom-red-button ">Add Payment</a>
+						<a href="#" class="btndash custom-red-button ">Renew Now</a>
+                    </div>
+									</td>
+			</tr>
+					</tbody>
+</table>
+{% endfor %}
+{% endif %}
+					<br>
+					
+					
                   </p>
-                  <br>
-                  <!-- your 1 on 1 sessions: -->
-                  {% if oneonones %}
-                  {% for o in oneonones %}
-                  <div>
-                  <p>{{o.reservation}}</p>
-                </div>
-                  {% endfor %}
-                  {% endif %}
                 </div>
               </div>
               <!-- dashboard content end here -->
@@ -229,7 +271,7 @@
                 <li><a href="#">Calender</a></li>
                 <li><a href="#">Membership</a></li>
                 <li><a href="#">Store</a></li>
-                <li><a href="{% url 'contact_us' %}">Contact</a></li>
+                <li><a href="#">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -259,7 +301,7 @@
  
 
   <!-- ===// Script starts from here -->
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
   <script>
   { function menuShow(){
     const targetNav = document.querySelector('.hidden');

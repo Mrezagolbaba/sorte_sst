@@ -6,10 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Dashboard - Stock Sniper Trading</title>
-  <link rel='shortcut icon' href="{% static 'images/nav/fav-icon.png' %}" type='image/x-icon'>
+  <link rel='shortcut icon' href="{% static 'assets/images/nav/fav-icon.png' %}" type='image/x-icon'>
   <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
   <!-- header starts -->
@@ -63,7 +64,7 @@
               <a class="nav-link" href="{% url 'login' %}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+              <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
             {% endif %}
           
@@ -83,8 +84,8 @@
     <div class="main-content">
       <div class="container">
         <div class="section-header text-center">
-          <h1 class="section-heading">My Account</h1>
-          <span>dashboard</span>
+          <h1 class="section-heading">My account</h1>
+          <span>discord</span>
           <br>
           <img class="w-100" src="{% static 'images/membership/dot.png' %}" alt="dott">
         </div>
@@ -109,7 +110,7 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dashboard-item" href="{% url 'bought_package' %}">
+                      <a class="dashboard-item" href="#">
                         <i class="fas fa-folder"></i>
                         <p>Memberships</p>
                       </a>
@@ -132,14 +133,14 @@
                         <p>Payment methods</p>
                       </a>
                     </li>
-                      <!-- <li>
-                        <a class="dashboard-item" href="#">
-                          <i class="fas fa-user"></i>
-                          <p>Account details</p>
-                        </a>
-                      </li> -->
                     <li>
-                      <a class="dashboard-item" href="{% url 'bookings' %}">
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-user"></i>
+                        <p>Account details</p>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dashboard-item" href="#">
                         <i class="fas fa-home-alt"></i>
                         <p>Bookings</p>
                       </a>
@@ -166,20 +167,54 @@
               <div class="dashboard-content mt-4">
                 <div class="text">
                   <p>
-                    Hello <span>{{user.username}}</span> (not {{user.first_name}} {{user.last_name}}? <span>Log out</span> ) <br> <br>
-                    From your account dashboard you can view your <span>recent orders</span>,
-                    <br> manage your <span>shipping and billing addresses,</span> and edit your <br>
-                    <span>password and account details.</span>
+                    <form action="discord_save" method="POST">
+                      {% csrf_token %}
+					  {% if discord_user %}
+            {% for discord in discord_user %}
+					  <p>Current Connected Discord ID*</p>
+					<p>{{discord.discord_id}} &nbsp; &nbsp; *** This user name should not be changed ***</p>
+                   <!-- dashboard content start here -->
+              	   <div class="col-3">
+                    {% endfor %}
+                    {% else %}
+
+                    
+                    <div class="col-3">
+                      <p>Discord ID*</p>
+                   <input class="effect-10" type="text" placeholder="Discord ID" name="discord_id" id="discord_id">
+                   {% if messages %}
+                               {% for message in messages %}
+                               <li{% if message.tags %} class="{{ message.tags }}"  {% endif %}>{{ message }}</li>
+                               {% endfor %}
+                               {% endif %}  
+                   <span class="focus-bg"></span>
+                 </div>		
+             
+                   <div class="space-save">
+                   <div class="button">
+                   
+                               <!-- <a href="{% url 'discord_save' %}" class="btn custom-red-button ">Save Changes</a> -->
+                               <button class="btn btn-lg btn-primary btn-block" type="submit"> Save discord username </button>
+                               
+                              </div>
+                            </div>
+                          </form>
+             
+             
+          <!-- <input class="effect-10" type="text" placeholder="Discord ID">
+          <p></p> 
+          <span class="focus-bg"></span>
+        </div>		
+		
+					<div class="space-save">
+				
+						</div> -->
+            
+					  {% endif %}
+              <!-- dashboard content end here -->
+					
+					
                   </p>
-                  <br>
-                  <!-- your 1 on 1 sessions: -->
-                  {% if oneonones %}
-                  {% for o in oneonones %}
-                  <div>
-                  <p>{{o.reservation}}</p>
-                </div>
-                  {% endfor %}
-                  {% endif %}
                 </div>
               </div>
               <!-- dashboard content end here -->
@@ -229,7 +264,7 @@
                 <li><a href="#">Calender</a></li>
                 <li><a href="#">Membership</a></li>
                 <li><a href="#">Store</a></li>
-                <li><a href="{% url 'contact_us' %}">Contact</a></li>
+                <li><a href="#">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -259,7 +294,7 @@
  
 
   <!-- ===// Script starts from here -->
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
   <script>
   { function menuShow(){
     const targetNav = document.querySelector('.hidden');

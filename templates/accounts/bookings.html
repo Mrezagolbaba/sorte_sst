@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 </head>
 <body>
   <!-- header starts -->
@@ -23,7 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto align-items-xl-center">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +64,7 @@
               <a class="nav-link" href="{% url 'login' %}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+              <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
             {% endif %}
           
@@ -83,8 +84,8 @@
     <div class="main-content">
       <div class="container">
         <div class="section-header text-center">
-          <h1 class="section-heading">My Account</h1>
-          <span>dashboard</span>
+          <h1 class="section-heading">My account</h1>
+          <span>Bookings</span>
           <br>
           <img class="w-100" src="{% static 'images/membership/dot.png' %}" alt="dott">
         </div>
@@ -109,7 +110,7 @@
                       </a>
                     </li>
                     <li>
-                      <a class="dashboard-item" href="{% url 'bought_package' %}">
+                      <a class="dashboard-item" href="#">
                         <i class="fas fa-folder"></i>
                         <p>Memberships</p>
                       </a>
@@ -132,12 +133,12 @@
                         <p>Payment methods</p>
                       </a>
                     </li>
-                      <!-- <li>
-                        <a class="dashboard-item" href="#">
-                          <i class="fas fa-user"></i>
-                          <p>Account details</p>
-                        </a>
-                      </li> -->
+                    <li>
+                      <a class="dashboard-item" href="#">
+                        <i class="fas fa-user"></i>
+                        <p>Account details</p>
+                      </a>
+                    </li>
                     <li>
                       <a class="dashboard-item" href="{% url 'bookings' %}">
                         <i class="fas fa-home-alt"></i>
@@ -166,20 +167,31 @@
               <div class="dashboard-content mt-4">
                 <div class="text">
                   <p>
-                    Hello <span>{{user.username}}</span> (not {{user.first_name}} {{user.last_name}}? <span>Log out</span> ) <br> <br>
-                    From your account dashboard you can view your <span>recent orders</span>,
-                    <br> manage your <span>shipping and billing addresses,</span> and edit your <br>
-                    <span>password and account details.</span>
-                  </p>
-                  <br>
-                  <!-- your 1 on 1 sessions: -->
-                  {% if oneonones %}
-                  {% for o in oneonones %}
-                  <div>
-                  <p>{{o.reservation}}</p>
+					  
+					  
+                   <!-- dashboard content start here -->
+              <div class="dashboard-content mt-4">
+                <div class="text">
+               
+                  {% if bookings %}
+                  <p>
+                    Below are your current bookings. <br> <br></p>
+                  {% for booking in bookings %}
+                  
+                    <h5>{{booking.reservation}} --- {{booking.status}}</h5>
+                    <br>
                 </div>
-                  {% endfor %}
-                  {% endif %}
+              </div>
+              {% endfor %}
+              {% else %}
+              <p>
+                There are no bookings yet. <br> <br></p>
+              {% endif %}
+              
+              <!-- dashboard content end here -->
+					
+					
+                  </p>
                 </div>
               </div>
               <!-- dashboard content end here -->
@@ -229,7 +241,7 @@
                 <li><a href="#">Calender</a></li>
                 <li><a href="#">Membership</a></li>
                 <li><a href="#">Store</a></li>
-                <li><a href="{% url 'contact_us' %}">Contact</a></li>
+                <li><a href="#">Contact</a></li>
               </ul>
             </div>
           </div>
@@ -259,7 +271,7 @@
  
 
   <!-- ===// Script starts from here -->
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
   <script>
   { function menuShow(){
     const targetNav = document.querySelector('.hidden');

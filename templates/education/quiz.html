@@ -1,0 +1,220 @@
+ {% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Homepage - Stock Sniper Trading</title>
+  <link rel='shortcut icon' href="{% static 'images/nav/fav-icon.png' %}" type='image/x-icon'>
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/quiz.css' %}">
+  <link rel="stylesheet" href="{% static 'css/courses.css' %}">
+</head>
+<body>
+
+  <!-- === header section start === -->
+  <header class="header">
+    <nav class="navbar navbar-expand-xl navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img class="img-fluid brand-logo" src="{% static 'images/nav/Icon.png' %}" alt="Logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto align-items-xl-center">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Calender
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'oneonone_reservation' %}">1 On 1 Session</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
+                <li><a class="dropdown-item" href="#">Economic Calender</a></li>
+                <li><a class="dropdown-item" href="#">Earning Reports</a></li> -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'all_memberships' %}">Memberships</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'store_homepage'%}">Store</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
+            </li>
+            <li class="nav-item image">
+              <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign In</a>
+            </li>
+            <li class="nav-item">
+              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
+            </li>
+          </ul>
+        </div>
+      </div>  
+    </nav>
+  </header>
+  <!-- ===//end of header section === -->
+
+
+
+
+  <!-- === membership program start === -->
+  <section class="membership-program" style="position: relative;">
+
+    <!-- <div class="left_sidebar">
+      <div class="close_icon">
+        <a href="introduction.html"><img src="{% static 'images/sidebar/delete-order.png' %}" alt="icon">Course Name</a>
+        <p>Your progress: <b>0</b> of <b>20</b> (0%) <button><img src="assets/images/sidebar/check.png" alt="icon"> Mark as Complete</button></p>
+      </div> -->
+      
+ 
+
+    </div>
+
+    <div class="container">
+      <div class="quiz_title">
+        <h1>Quiz Course1</h1>
+      </div>
+{% if quiz %}
+      <form action="#" class="quiz_form">
+        <h2 name="question" id="question">{{ quiz.question }}</h2>
+        <p>
+          <input type="radio" id="answer1" name="answer1" checked>
+          <label for="test1">{{ quiz.answer1 }}</label>
+        </p>
+        <p>
+          <input type="radio" id="answer2" name="answer2">
+          <label for="test2">{{ quiz.answer2 }}</label>
+        </p>
+        <p>
+          <input type="radio" id="answer3" name="answer3">
+          <label for="test3">{{ quiz.answer3 }}</label>
+        </p>
+        <p>
+          <input type="radio" id="answer4" name="answer4">
+          <label for="test4">{{ quiz.answer4 }}</label>
+        </p>
+
+        <div class="quiz_button">
+          <div class="nextprev">
+            <!-- <button>Prev</button>
+            <button>Next</button> -->
+            <button>Finish</button>
+          </div>
+        </div>
+
+      </form>
+{% endif %}
+    </div>
+  </section>
+
+
+
+  <!-- ===//end of membership program === -->
+
+
+
+
+  <!-- === footer section start === -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-5">
+        <div class="col-lg-6">
+          <div class="logo">
+            <img class="img-fluid" src="{% static 'images/nav/Icon.png' %}" alt="logo">
+          </div>
+          <div class="text">
+            <p>
+              At SST, we will mentor you to become a
+              more consistent and profitable trader, by
+              teaching you technical and fundamental
+              analysis. <br> <br>
+              We start with the basics and teach you
+              step by step how to read and interpret
+              charts, learn various trading strategies, and
+              help understand the psychology behind
+              trading. Take your trading to the next level
+              and join the fast growing sniper team.
+              <br><br>
+
+              © 2022
+              All Rights Reserved for Stock Sniper Trading
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-4">
+          <div class="navigation-links">
+            <h4>Navigation</h4>
+
+            <ul>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'oneonone_reservation' %}">Calender</a></li>
+              <li><a href="{% url 'all_memberships' %}">Membership</a></li>
+              <li><a href="{% url 'store_homepage' %}">Store</a></li>
+              <li><a href="{% url 'contact_us' %}">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-8">
+          <div class="contact-info">
+            <h4>Contact Details</h4>
+            <span>Email Address</span>
+            <a href="mailto:stocksnipertrading@gmail.com">stocksnipertrading@gmail.com</a>
+          </div>
+          <div class="social-link">
+            <h4>Stay Connected</h4>
+            <div class="icons">
+              <ul>
+                <li><a href="#"><img src="{% static 'images/social-links/telegram.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/youtube.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/insta.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/fb.png' %}" alt="icon"></a></li>
+                <li><a href="#"><img src="{% static 'images/social-links/twitter.png' %}" alt="icon"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ===//end of footer section === -->
+
+
+
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script>
+    // dropdown menu show/hide on hover start
+    (function () {
+      const dropdown = document.querySelector('.dropdown');
+      const navbarDropdown = document.querySelector('#navbarDropdown');
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+
+      dropdown.addEventListener('mouseenter', function(){
+        navbarDropdown.classList.add('show');
+        dropdownMenu.classList.add('show');
+      })
+      dropdown.addEventListener('mouseleave', function(){
+        navbarDropdown.classList.remove('show');
+        dropdownMenu.classList.remove('show');
+      })
+    })();
+    // dropdown menu show/hide on hover end
+  </script>
+</body>
+</html>

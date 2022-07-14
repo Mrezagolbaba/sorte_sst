@@ -31,14 +31,14 @@
                 Calender
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">1 On 1 Session</a></li>
+                <li><a class="dropdown-item" href="{% url 'oneonone_reservation' %}">1 On 1 Session</a></li>
                 <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
                 <!-- <li><a class="dropdown-item" href="#">Economic Calender</a></li> -->
                 <!-- <li><a class="dropdown-item" href="#">Earning Reports</a></li> --> -->
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Memberships</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'all_memberships' %}">Memberships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
