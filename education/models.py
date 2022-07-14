@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from tokenize import blank_re
 from django.db import models
 from django.contrib.auth.models import User
@@ -19,6 +20,10 @@ class Quiz(models.Model):
 
     def __str__(self):
         return self.question
+    
+    class Meta:
+        verbose_name = 'Quizes'
+        verbose_name_plural = 'Quizes'
 
 
 

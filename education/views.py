@@ -1,6 +1,6 @@
 from multiprocessing import context
 from django.shortcuts import render, get_object_or_404
-from .models import CourseModel, LessonModel
+from .models import CourseModel, LessonModel, Quiz
 
 
 def sniper_education(request):
@@ -35,3 +35,16 @@ def lesson_detail(request, lesson_id):
 
     }
     return render(request, 'education/lesson-template.html', context)
+
+def quiz_detail(request, quiz_id):
+    quiz = get_object_or_404(Quiz, id=quiz_id)
+    context = {
+        'quiz' : quiz
+    }
+    return render(request, 'education/quiz.html', context)
+
+def check_quiz(request):
+    if request.method == "POST":
+        question = request.POST['question']
+        quiz = Quiz.objects.all().filter(question=question)
+        correct = quiz.correct_answer
