@@ -1,8 +1,10 @@
+from multiprocessing import context
 from django.contrib import messages, auth
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout as logout_
 from django.contrib.auth.models import User
-
+from .models import DiscordModel
+from membership.models import LiveSession, SelectedPackage
 
 
 def dashboard(request):
@@ -54,13 +56,44 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 
+def discord(request):
+    discord_user = DiscordModel.objects.all().filter(user=request.user)
+    context = {
+        'discord_user':discord_user
+    }
+    return render(request, 'accounts/discord.html', context)
+
+def discord_save(request):
+    if request.method == 'POST':
+        user = request.user
+        discord_id = request.POST['discord_id']
+        check_for_repeat = DiscordModel.objects.all().filter(discord_id=discord_id)
+        if not check_for_repeat:
+            discord = DiscordModel.objects.create(user=user, discord_id=discord_id)
+            discord.save()
+            
+        else:
+            messages.info(request, 'you can not reserve for second time')
+            return redirect('discord')
+    return redirect('discord')
+
+    # return redirect('discord')
+
+def bookings(request):
+    bookings = LiveSession.objects.all().filter(user=request.user)
+    context = {
+        'bookings': bookings,
+    }    
+    return render(request, 'accounts/bookings.html', context)
 
 
 
-
-
-
-
+def bought_package(request):
+    membership = SelectedPackage.objects.all().filter(user=request.user)
+    context = {
+        'membership': membership
+    }
+    return render(request,'accounts/dashboard-memberships.html', context)
 
 
 

@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import DiscordModel
 
-# Register your models here.
+class DiscordAdmin(admin.ModelAdmin):
+    list_display = ('user', 'discord_id')
+
+
+admin.site.register(DiscordModel, DiscordAdmin)
