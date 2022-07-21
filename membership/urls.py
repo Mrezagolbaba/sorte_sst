@@ -1,4 +1,6 @@
 from django.urls import path
+
+from education.views import quiz_detail
 from .views import *
 
 
@@ -16,4 +18,5 @@ urlpatterns = [
     path('oneonone_reservation', oneonone_reservation, name='oneonone_reservation'),
     path('reservation-detail/<int:session_id>', oneonone_reservation_detail, name='reservationdetail'),
     path('reserved/<int:session_id>', oneonone_make_reservation, name='reserved'),
+ 
     ]

@@ -123,7 +123,7 @@ class SelectedPackage(models.Model):
     user = models.ForeignKey(auth_user, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=100, choices=PACKAGE_CHOICESS ,default='Monthly')
     start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
+    end_date = models.DateTimeField(default=timezone.now, null=True)
     payment = models.CharField(max_length=50, choices=PAYMENT_CHOICES, default='Paypal')
     price = models.FloatField(default=0.0)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES_FOR_PACKAGE, default='Active')
