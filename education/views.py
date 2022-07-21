@@ -1,10 +1,20 @@
 from multiprocessing import context
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import CourseModel, LessonModel, Quiz
-
+from membership.models import SelectedPackage
+import datetime
 
 def sniper_education(request):
-    return render(request, 'education/sniper_education.html')
+    user = request.user
+    check_for_expired = SelectedPackage.objects.get(user=user)
+    current_datetime = datetime.datetime.now()
+    expire_date = getattr(check_for_expired, 'end_date')
+    expire_date = str(expire_date)[:10]
+    current_datetime = str(current_datetime)[:10]
+    if current_datetime == expire_date:
+        redirect('all_memberships')
+    else:
+        return render(request, 'education/sniper_education.html')
 
 
 def introduction(request):
@@ -47,4 +57,15 @@ def check_quiz(request):
     if request.method == "POST":
         question = request.POST['question']
         quiz = Quiz.objects.all().filter(question=question)
-        correct = quiz.correct_answer
+        correct = quiz[:5]
+        answer1 = request.POST['answer1']
+        answer2 = request.POST['answer2']
+        answer3 = request.POST['answer3']
+        answer4 = request.POST['answer4'] 
+        
+        print(answer1)
+        print(answer2)
+        print(answer3)
+        print(answer4)
+    
+    return redirect('sniper_education')
