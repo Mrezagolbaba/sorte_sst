@@ -106,13 +106,15 @@
 <!-- <th class="column100 column1" data-column="column1">Remove</th> -->
 <th class="column100 column2" data-column="column2">Product</th>
 <th class="column100 column3" data-column="column3">Price</th>
-<th class="column100 column4" data-column="column4">Quantity</th>
-<!-- <th class="column100 column5" data-column="column5">Subtotal</th> -->
+<th class="column100 column4" data-column="column4">Start date</th>
 <th class="column100 column5" data-column="column6">Tax</th>
+<th class="column100 column6" data-column="column7">Expire date</th>
 </tr>
 </thead>
 {% if package%}
 {% for p in package %}
+{% if current_datetime %}
+{% if end_date %}
 <tbody>
 
   <tr class="row100">
@@ -122,7 +124,9 @@
 <td class="column100 column4" data-column="column4">1&nbsp;</td>
 <!-- <td class="column100 column5" data-column="column5">$49.99 / month</td> -->
 <td class="column100 column5" data-column="column6">${{p.tax}} / month</td>
-
+<td class="column100 column6" data-column="column5">{{end_date}}&nbsp;</td>
+{% endif %}
+{% endif %}
 </tbody>
 </table>
 			<div class="spacer-checkout"></div>

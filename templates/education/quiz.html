@@ -85,36 +85,41 @@
  
 
     </div>
-
+    {% if quiz %}
     <div class="container">
       <div class="quiz_title">
-        <h1>Quiz Course1</h1>
+        <h1>{{ quiz.question }}</h1>
       </div>
-{% if quiz %}
-      <form action="#" class="quiz_form">
-        <h2 name="question" id="question">{{ quiz.question }}</h2>
+
+
+      <form action="check-quiz" class="quiz_form" method="POST">
+        {% csrf_token %}
+        <h2 name="question2" id="question2">{{ quiz.question }}</h2>
+        <input type="text" id="question" name="question" value="{{quiz.question}}" hidden="true">
         <p>
-          <input type="radio" id="answer1" name="answer1" checked>
+          <input type="radio" id="answer1" name="answer" checked>
           <label for="test1">{{ quiz.answer1 }}</label>
         </p>
         <p>
-          <input type="radio" id="answer2" name="answer2">
+          <input type="radio" id="answer2" name="answer">
           <label for="test2">{{ quiz.answer2 }}</label>
         </p>
         <p>
-          <input type="radio" id="answer3" name="answer3">
+          <input type="radio" id="answer3" name="answer">
           <label for="test3">{{ quiz.answer3 }}</label>
         </p>
         <p>
-          <input type="radio" id="answer4" name="answer4">
+          <input type="radio" id="answer4" name="answer">
           <label for="test4">{{ quiz.answer4 }}</label>
         </p>
-
+        <input type="text" name="final_answer" id="final_answer">
         <div class="quiz_button">
           <div class="nextprev">
             <!-- <button>Prev</button>
             <button>Next</button> -->
-            <button>Finish</button>
+            <!-- <button>Finish</button> -->
+            <input type="submit" value="Submit the answer">
+
           </div>
         </div>
 
@@ -216,5 +221,6 @@
     })();
     // dropdown menu show/hide on hover end
   </script>
+
 </body>
 </html>
