@@ -85,6 +85,15 @@
   <section class="membership-program">
     <div class="container">
       <div class="section-header text-center">
+        {% if messages %}
+        {% for msg in messages %}
+        <ul>
+        <li {% if message.tags %} class="{{ msg.tags }}"  {% endif %}><h1>{{ msg }}</h1></li>
+        <br>
+        <br>
+      </ul>
+      {% endfor %}
+      {% endif %}
         <h2 class="section-heading pb-2">Our Exlusive Membership Program</h2>
         <p>Through structured lessons, interactive instruction, and dedicated support, you’ll have the opportunity to develop the skills 
           needed to execute our Core Strategy — designed to empower you to generate income and build wealth.</p>
