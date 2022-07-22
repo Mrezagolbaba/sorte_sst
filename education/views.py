@@ -1,18 +1,21 @@
-from multiprocessing import context
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import CourseModel, LessonModel, Quiz
 from membership.models import SelectedPackage
-import datetime
+from django.contrib import messages
+from datetime import date
+from django.utils.dateparse import parse_date
+
 
 def sniper_education(request):
     user = request.user
     check_for_expired = SelectedPackage.objects.get(user=user)
-    current_datetime = datetime.datetime.now()
-    expire_date = getattr(check_for_expired, 'end_date')
-    expire_date = str(expire_date)[:10]
-    current_datetime = str(current_datetime)[:10]
-    if current_datetime == expire_date:
-        redirect('all_memberships')
+    expire_date = getattr(check_for_expired, 'end_date').date()
+    today = date.today()
+
+    if today > expire_date:
+        messages.info(request, 'Your account has been expired!')
+        return  render(request, 'membership/all_memberships.html')
     else:
         return render(request, 'education/sniper_education.html')
 
