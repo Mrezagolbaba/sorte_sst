@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     'education',
     'store',
     'membership',
+    'payments',
+    
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,15 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+COINBASE_COMMERCE_API_KEY  = 'suxcPuYroAlMRJBy'
+
+#Email config
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'amirhosein.ai92@gmail.com'
+EMAIL_HOST_PASSWORD = 'rklryodunofjnrsk'
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
