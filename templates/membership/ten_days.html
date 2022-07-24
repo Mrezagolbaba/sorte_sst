@@ -86,7 +86,7 @@
   <section class="membership-program">
     <div class="container">
       <div class="section-header text-center">
-        <h2 class="section-heading pb-2">Checkout</h2>
+        <h2 class="section-heading pb-2">Expiration Details</h2>
       </div>
       <div class="devider text-center">
         <img class="img-fluid w-100" src="{% static 'images/membership/dot.png' %}" alt="dots">
@@ -104,26 +104,33 @@
 <thead>
 <tr class="row100 head">
 <!-- <th class="column100 column1" data-column="column1">Remove</th> -->
-<th class="column100 column2" data-column="column2">Product</th>
-<th class="column100 column3" data-column="column3">Price</th>
-<th class="column100 column4" data-column="column4">Start datse</th>
-<th class="column100 column5" data-column="column6">Tax</th>
+<!-- <th class="column100 column2" data-column="column2">Product</th>
+<th class="column100 column3" data-column="column3">Price</th> -->
+<th class="column100 column4" data-column="column4">User</th>
+<th class="column100 column5" data-column="column6">Package Type</th>
 <th class="column100 column6" data-column="column7">Expire date</th>
+<th class="column100 column7" data-column="column8">Discord id</th>
 </tr>
 </thead>
 <tbody>
-{% if members%}
-{% for member in members %}
+{% if expired_users%}
+{% for mem in expired_users %}
 
   <tr class="row100">
 <!-- <td class="column100 column1" data-column="column1"><img src="{% static 'images/delete-order.png' %}" alt="delete"></td> -->
-<td class="column100 column2" data-column="column2"><input type="text"  style="background-color: transparent; color:white; display: block; width: 100%;height: 100%;" name="title" id="title" value="aboli">&nbsp;</td>
-<td class="column100 column3" data-column="column3"><input type="text"  style="background-color: transparent; color:white; display: block; width: 100%;height: 100%;" name="price" id="price" value="aboli2">&nbsp; </td>
-<td class="column100 column4" data-column="column4">{{member.user}}&nbsp;</td>
+<!-- <td class="column100 column2" data-column="column2"><input type="text"  style="background-color: transparent; color:white; display: block; width: 100%;height: 100%;" name="title" id="title" value="aboli">&nbsp;</td> -->
+<!-- <td class="column100 column3" data-column="column3"><input type="text"  style="background-color: transparent; color:white; display: block; width: 100%;height: 100%;" name="price" id="price" value="aboli2">&nbsp; </td> -->
+<td class="column100 column4" data-column="column4">{{mem.user}}&nbsp;</td>
 <!-- <td class="column100 column5" data-column="column5">$49.99 / month</td> -->
-<td class="column100 column5" data-column="column6">${{member.title}} / month</td>
-<td class="column100 column6" data-column="column5">{{member.end_date}}&nbsp;</td>
-
+<td class="column100 column5" data-column="column6">${{mem.title}} </td>
+<td class="column100 column6" data-column="column5">{{mem.end_date}}&nbsp;</td>
+{% if discord_username %}
+{% for discord in discord_username %}
+<td class="column100 column6" data-column="column5">{{discord.discord_id}}&nbsp;</td>
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
 </tbody>
 </table>
 			<div class="spacer-checkout"></div>
@@ -135,7 +142,7 @@
 			<!-- <form>
   			<input type="text" id="fname" name="fname" value="Coupon Code">
 			</form> -->
-      <button class="btn btn-lg btn-primary btn-block" type="submit"> Successful Payment Function </button>
+      <!-- <button class="btn btn-lg btn-primary btn-block" type="submit"> Successful Payment Function </button> -->
                     </div>
 			
 			<!-- <div class="update-button">
@@ -143,8 +150,7 @@
                     </div> -->
 </div>
 		</p>
-    {% endfor %}
-    {% endif %}
+ 
       
     </div>
 	</form>
