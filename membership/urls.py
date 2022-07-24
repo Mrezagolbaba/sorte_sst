@@ -18,5 +18,5 @@ urlpatterns = [
     path('oneonone_reservation', oneonone_reservation, name='oneonone_reservation'),
     path('reservation-detail/<int:session_id>', oneonone_reservation_detail, name='reservationdetail'),
     path('reserved/<int:session_id>', oneonone_make_reservation, name='reserved'),
- 
+    path('aboli', ten_days_left_members, name='aboli')
     ]

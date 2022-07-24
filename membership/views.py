@@ -7,9 +7,8 @@ import re
 from django.contrib import messages
 from dateutil.relativedelta import relativedelta
 import datetime
-from django.utils.dateparse import parse_datetime
-import dateutil.parser
-
+from datetime import date
+from django.core.mail import send_mail
 
 
 @login_required(login_url='login')
@@ -96,6 +95,7 @@ def trade_idea(request):
 
 def save_selected_package(request):
     current_datetime = datetime.datetime.now()
+    
     if request.method == 'POST':
         user = request.user
         title = request.POST['title']
@@ -161,5 +161,40 @@ def oneonone_make_reservation(request, session_id):
 
 
 
+def ten_days_left_members(request):
+    all_users = SelectedPackage.objects.all()
+    
+    today = date.today()
+    members = []
+    for member in all_users:
+        expire_date = getattr(member, 'end_date').date()
+        b = expire_date - today
+        b = str(b)    
+        if int(b[0]) == 0:
+                send_mail(
+                    'Reminder',
+                    'your account has been expired  ',
+                    'amirhosein.ai92@gmail.com',
+                    [member.email, 'amir.cpu@gmail.com'],
+                    fail_silently=False
+                )
+        else:
+            days_left = int(b[0:2])
+            
+            if days_left <= 10:
+                send_mail(
+                    'Reminder',
+                    'your account will be expired in ' + str(days_left)+ ' days',
+                    'amirhosein.ai92@gmail.com',
+                    [member.email, 'amir.cpu@gmail.com'],
+                    fail_silently=False
+                )
 
+    
+    context = {
+        'members': members
+    }
+
+    return render(request, 'membership/ten_days.html', context)
+        
 

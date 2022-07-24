@@ -121,6 +121,7 @@ STATUS_CHOICES_FOR_PACKAGE = (
 
 class SelectedPackage(models.Model):
     user = models.ForeignKey(auth_user, on_delete=models.CASCADE, null=True, blank=True)
+    email = models.EmailField(default='amir.cpu@gmail.com')
     title = models.CharField(max_length=100, choices=PACKAGE_CHOICESS ,default='Monthly')
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField(default=timezone.now, null=True)
