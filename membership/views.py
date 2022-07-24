@@ -9,6 +9,7 @@ from dateutil.relativedelta import relativedelta
 import datetime
 from datetime import date
 from django.core.mail import send_mail
+from accounts.models import DiscordModel
 
 
 @login_required(login_url='login')
@@ -48,7 +49,7 @@ def silver_checkout(request):
         'end_date':end_date
     }
     return render(request, 'membership/silver_checkout.html', context)
- 
+
 def gold_checkout(request):
     current_datetime = datetime.datetime.now()
     end_date = current_datetime + relativedelta(months=12)
@@ -98,6 +99,7 @@ def save_selected_package(request):
     
     if request.method == 'POST':
         user = request.user
+        mail = user.email
         title = request.POST['title']
         if title == 'Bronze':
             end_date =  current_datetime + relativedelta(months=3)
@@ -115,7 +117,7 @@ def save_selected_package(request):
         left_value = str(price[0])
         right_value = str(price[1])
         price = left_value + "." + right_value 
-        package = SelectedPackage.objects.create(user=user, title=title, price=price, start_date=current_datetime, end_date=end_date)
+        package = SelectedPackage.objects.create(user=user, title=title, price=price, start_date=current_datetime, end_date=end_date, email=mail)
         package.save()
         return redirect('index')
 
@@ -137,7 +139,6 @@ def oneonone_reservation_detail(request, session_id):
         'live_oneonone': live_oneonone
     }
     return render(request, 'membership/oneonone_reservation_detail.html', context)
-
 
 
 def oneonone_make_reservation(request, session_id):
@@ -163,14 +164,37 @@ def oneonone_make_reservation(request, session_id):
 
 def ten_days_left_members(request):
     all_users = SelectedPackage.objects.all()
-    
+    context = None
     today = date.today()
-    members = []
+    past_due = False
+    zero_days = False
+    list_search_by_email = []
     for member in all_users:
         expire_date = getattr(member, 'end_date').date()
         b = expire_date - today
         b = str(b)    
-        if int(b[0]) == 0:
+        
+        if today > expire_date:
+    
+                send_mail(
+                    'Reminder',
+                    'your account has been expired  ' + 'in last ' + ' ' +str(today - expire_date) ,
+                    'amirhosein.ai92@gmail.com',
+                    [member.email, 'amir.cpu@gmail.com'],
+                    fail_silently=False
+                )
+                list_search_by_email.append(member.email)    
+                pass
+        if today < expire_date:
+
+            if int(b[0]) == 0:
+              zero_days = True  
+            if int(b[0]) <= 10 :
+                ten_days_left = True
+
+        
+            if zero_days:
+                # list_users += member
                 send_mail(
                     'Reminder',
                     'your account has been expired  ',
@@ -178,10 +202,15 @@ def ten_days_left_members(request):
                     [member.email, 'amir.cpu@gmail.com'],
                     fail_silently=False
                 )
-        else:
-            days_left = int(b[0:2])
-            
-            if days_left <= 10:
+                list_search_by_email.append(member.email)
+        
+    
+            if ten_days_left:
+               days_left = int(b[0:2])
+
+               if days_left <= 10:
+
+                # list_users += member
                 send_mail(
                     'Reminder',
                     'your account will be expired in ' + str(days_left)+ ' days',
@@ -189,12 +218,22 @@ def ten_days_left_members(request):
                     [member.email, 'amir.cpu@gmail.com'],
                     fail_silently=False
                 )
+                list_search_by_email.append(member.email)
+
+             
 
     
+    for item in list_search_by_email:
+        expired_users = SelectedPackage.objects.all().filter(email=item)
+        discord_username = DiscordModel.objects.all().filter(email=item)
+        # print(item)
+
     context = {
-        'members': members
+        'expired_users':expired_users,
+        'discord_username': discord_username
     }
 
     return render(request, 'membership/ten_days.html', context)
         
 
+# def oreder//////
