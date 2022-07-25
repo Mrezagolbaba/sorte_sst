@@ -12,6 +12,7 @@ class LessonAdmin(admin.TabularInline):
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'chapter')
     list_filter = ('chapter',)
+    list_display_links = ('id', 'title', 'chapter')
     inlines = [LessonAdmin ]
 
 

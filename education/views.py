@@ -4,21 +4,37 @@ from .models import CourseModel, LessonModel, Quiz
 from membership.models import SelectedPackage
 from django.contrib import messages
 from datetime import date
-from django.utils.dateparse import parse_date
+
 
 
 def sniper_education(request):
     user = request.user
-    check_for_expired = SelectedPackage.objects.get(user=user)
-    expire_date = getattr(check_for_expired, 'end_date').date()
-    today = date.today()
+    same_user = []
+    check_for_same_user_1 = True
+    check_for_same_user_2 = False
+    check_for_expired = SelectedPackage.objects.all().filter(user=user, status='Active')
+    if check_for_expired:
+        today = date.today()
+        for member in check_for_expired:
+            expire_date = getattr(member, 'end_date').date()
+            if today > expire_date:
+                same_user.append(member)
+                check_for_same_user_1 = False
+                member.status = 'Expired'
+                member.save()
+                messages.info(request, 'Your account has been expired!')
+                
+                # return  render(request, 'membership/all_memberships.html')
+            if today < expire_date:
+                check_for_same_user_2 = True
+                same_user.append(member)
 
-    if today > expire_date:
-        messages.info(request, 'Your account has been expired!')
-        return  render(request, 'membership/all_memberships.html')
+        if check_for_same_user_1 or check_for_same_user_2:
+            return render(request, 'education/sniper_education.html')
+        else:
+            return render(request,'membership/all_memberships.html')
     else:
-        return render(request, 'education/sniper_education.html')
-
+         return render(request,'membership/all_memberships.html')
 
 def introduction(request):
     return render(request, 'education/introduction.html')

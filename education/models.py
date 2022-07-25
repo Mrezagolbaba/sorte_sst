@@ -58,6 +58,7 @@ class LessonModel(models.Model):
     video = models.FileField(upload_to='videos/%Y/%m/%d/', null=True, blank=True)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,null=True,blank=True)
     number = models.IntegerField(default=1)
+    point = models.FloatField(default=3.39)
 
     def __str__(self):
         return self.title
