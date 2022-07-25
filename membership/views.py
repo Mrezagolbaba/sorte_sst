@@ -166,7 +166,6 @@ def ten_days_left_members(request):
     all_users = SelectedPackage.objects.all()
     context = None
     today = date.today()
-    past_due = False
     zero_days = False
     list_search_by_email = []
     for member in all_users:
@@ -175,7 +174,8 @@ def ten_days_left_members(request):
         b = str(b)    
         
         if today > expire_date:
-    
+                member.status = 'Expired'
+                member.save()
                 send_mail(
                     'Reminder',
                     'your account has been expired  ' + 'in last ' + ' ' +str(today - expire_date) ,
