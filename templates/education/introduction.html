@@ -32,11 +32,11 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{% url 'oneonone_reservation' %}">1 On 1 Session</a></li>
-                <li><a class="dropdown-item" href="#">Live Sessions</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
                 <li><a class="dropdown-item" href="#">Economic Calender</a></li>
-                <li><a class="dropdown-item" href="#">Earning Reports</a></li>
+                <li><a class="dropdown-item" href="#">Earning Reports</a></li> -->
               </ul>
-            </li>fffffffffffff
+            </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="memberships.html">Memberships</a>
             </li>
@@ -98,19 +98,18 @@
                <input id="forex_tab1" type="radio" name="tabs" checked>
                <label for="forex_tab1">Course Info</label>
                <input id="forex_tab2" type="radio" name="tabs">
-               <label for="forex_tab2">Curriculum</label>
+               <!-- <label for="forex_tab2">Curriculum</label> -->
                <div class="forext_tab_content">
                 <div id="forex_content1">
                   <h1>What will I learn</h1>
                   <ul>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">Introduction to Forex:</li>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">1) What is Forex Trading?</li>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">2) How are Currency’s Traded?</li>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">3) What are Currency Pairs</li>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">4) How are Currency Pairs Quoted</li>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">5) What are Majors, Minors, and Exotics?</li>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">6) What are Indicies and Commodities?</li>
-                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">7) What is the Best/Worst times to Trade?</li>
+                    {% if lessons%}
+                    {% for lesson in lessons %}
+                  
+                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">{{lesson.title}}</li>
+                  
+                  {% endfor %}
+                  {% endif %}
                   </ul>
                 </div>
 

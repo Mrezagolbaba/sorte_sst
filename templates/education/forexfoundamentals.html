@@ -1,5 +1,4 @@
  {% load static %}
- <!DOCTYPE html>
  <html lang="en">
  <head>
   <meta charset="UTF-8">
@@ -10,7 +9,7 @@
   <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
   <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="{% static 'css/courses.css' %}">
+	<link rel="stylesheet" href="{% static 'css/courses.css' %}"> 
 </head>
 <body>
 
@@ -25,14 +24,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto align-items-xl-center">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Calender
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="oneononesession.html">1 On 1 Session</a></li>
+                <li><a class="dropdown-item" href="{% url 'oneonone_reservation' %}">1 On 1 Session</a></li>
                 <!-- <li><a class="dropdown-item" href="#">Live Sessions</a></li>
                 <li><a class="dropdown-item" href="#">Economic Calender</a></li>
                 <li><a class="dropdown-item" href="#">Earning Reports</a></li> -->
@@ -51,7 +50,7 @@
               <a class="nav-link" href="contactus.html">Contact</a>
             </li>
             <li class="nav-item image">
-              <img src="assets/images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
+              <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Sign In</a>
@@ -72,62 +71,108 @@
 
 
 
+
+
+
   <!-- === membership program start === -->
-  <section class="membership-program" style="padding-bottom: 0; position: relative;">
-
-
-    <div class="left_sidebar">
-      <div class="close_icon">
-        <a href="introduction.html"><img src="assets/images/sidebar/delete-order.png' %}" alt="icon">Course Name</a>
-        <p>Your progress: <b>0</b> of <b>20</b> (0%) <button><img src="assets/images/sidebar/check.png' %}" alt="icon"> Mark as Complete</button></p>
-      </div>
-
-      <ul class="sidebar_item">
-        <li class="sidebar_single_item">
-          <a href="lession-1.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>What is Forex Trading?</span></a>
-        </li>
-    
-      </ul>
-
-    </div>
-
+  <section class="membership-program" style="padding-bottom: 0;">
     <div class="container">
+      <div class="int_forex_area">
+        <div class="forex_title">
+         <h1>Forex Fundamental</h1>
+       </div>
+       <ul class="forex_tag">
+        <li><a href="#">Categories</a></li>
+        <li>Introduction to Forex</li>
+      </ul>
       <div class="row">
-        <div class="col-md-12">
-          <img src="{% static 'images/courses/What-is-forex01.jpg' %}" width="100%" alt="icon">
-          <br>
-          <!-- <img src="{% static 'images/courses/What-is-forex-1.png' %}" alt="icon"> -->
-			
-			<p>Video below</p>
-			{% if main_lesson %}
-			<!-- <video src="{{main_lesson.video.url}}" width="100%" height="564" frameborder="0" allow="autoplay; fullscreen preload" allowfullscreen ></video> -->
-      <video id="movie" width="320" height="320" preload controls>
-        <source src="{{main_lesson.video.url}}"  />
-        
-        <object width="320" height="240" type="application/x-shockwave-flash" data="flowplayer-3.2.1.swf">
-          <param ... />
-        </object>
-      </video>
-      
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>{{main_lesson.body}}</p>
-          <p>&nbsp;</p>
-          <!-- <p>Forex trading is like the currency exchange you may do while traveling. An individual buys one currency and sells another, and the conversation rate continually fluctuates based on supply and demand. Currencies are traded in the foreign exchange market, an international marketplace that is open 24 hours a day 5 days a week Monday through Friday. All Forex trading is conducted over the counter (OTC), indicating there’s no physical exchange. A global network of banks and other financial institutions oversee the Forex market.</p> -->
-          <br>
-          <br>
-          <img src="{{main_lesson.photo_main.url}}" width="100%" alt="icon">
-       {% endif %}   
+        <div class="col-xl-8 col-lg-12">
+          <div class="forex_left">
+            <div class="forex_left_img">
+              <img src="{% static 'images/img2.png' %}" alt="img">
+            </div>
+
+            <div class="">
+
+             <div class="forex_tabs">
+               <input id="forex_tab1" type="radio" name="tabs" checked>
+               <label for="forex_tab1">Course Info</label>
+               <input id="forex_tab2" type="radio" name="tabs">
+               <!-- <label for="forex_tab2">Curriculum</label> -->
+               <div class="forext_tab_content">
+                <div id="forex_content1">
+                  <h1>What will I learn</h1>
+                  <ul>
+                    {% if lessons%}
+                    {% for lesson in lessons %}
+                  
+                    <li><img src="{% static 'images/sidebar/check.png' %}" alt="icon">{{lesson.title}}</li>
+                  
+                  {% endfor %}
+                  {% endif %}
+                  </ul>
+                </div>
+
+                <div id="forex_content2">
+                  content2
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-12">
+        <div class="forex_right">
+          <p><img src="{% static 'images/sidebar/wishlist.png' %}" alt="icon">Wishlist</p>
+          <div class="forex_progress">
+            <p>Course Progress</p>
+            <ul>
+              <li>0/7</li>
+              <li>0% Complete</li>
+            </ul>
+            <span class="forex_progress_bg">
+              <span style="width: 0%;" class="forex_progress_percent"></span>
+            </span>
+          </div>
+          <div class="forex_box">
+            <div class="forex_box_top">
+              <a href="{% url 'all_courses_ch2' %}">Start Learning</a>
+              <p class="forex_complete"><img src="{% static 'images/sidebar/caution.png' %}" alt="icon">Complete all lessons to mark this course as complete</p>
+              <p class="forex_enrolled"><img src="{% static 'images/sidebar/caution.png' %}" alt="icon"><span>You enrolled in this course on <b>April 8, 2022</b></span></p>
+            </div>
+            <div class="forex_box_bottom">
+              <table>
+                <tr>
+                  <td><img src="assets/images/sidebar/bar-chart.png' %}" alt="icon">Level</td>
+                  <td>Beginner</td>
+                </tr>
+                <tr>
+                  <td><img src="{% static 'images/sidebar/eductation-cap.png' %}" alt="icon">Total Enrolled</td>
+                  <td>416</td>
+                </tr>
+                <tr>
+                  <td><img src="{% static 'images/sidebar/clock.png' %}" alt="icon">Duration</td>
+                  <td>3 hours</td>
+                </tr>
+                <tr>
+                  <td><img src="{% static 'images/sidebar/certificate.png' %}" alt="icon">Certificate</td>
+                  <td>Certificate of completion</td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-
-
-  </section>
-  <!-- ===//end of membership program === -->
-
-
+</div>
+</section>
+<!-- ===//end of membership program === -->
 
 
   <!-- === footer section start === -->
@@ -194,7 +239,7 @@
     </div>
   </footer>
   <!-- ===//end of footer section === -->
-
+  
 
 
   <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
