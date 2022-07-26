@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import CourseModel, LessonModel, Quiz
 from membership.models import SelectedPackage
@@ -37,7 +36,23 @@ def sniper_education(request):
          return render(request,'membership/all_memberships.html')
 
 def introduction(request):
-    return render(request, 'education/introduction.html')
+    lessons = LessonModel.objects.all().filter(chapter=1)
+    context = {
+    
+        'lessons' : lessons,
+    }
+    return render(request, 'education/introduction.html', context)
+
+
+def forexfoundamentals(request):
+    lessons = LessonModel.objects.all().filter(chapter=2)
+    context = {
+    
+        'lessons' : lessons,
+    }
+
+    return render(request,'education/forexfoundamentals.html', context)
+
 
 def all_courses_ch1(request):
     courses = CourseModel.objects.all().filter(chapter=1)
@@ -47,6 +62,19 @@ def all_courses_ch1(request):
         'lessons' : lessons,
     }
     return render(request, 'education/all_courses_chapter1.html', context)
+
+
+def all_courses_ch2(request):
+    courses = CourseModel.objects.all().filter(chapter=2)
+    lessons = LessonModel.objects.all().filter(chapter=2)
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+    }
+    return render(request, 'education/all_courses_chapter2.html', context)
+
+
+
 
 
 def course_detail(request, course_id):
