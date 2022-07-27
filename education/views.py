@@ -36,22 +36,43 @@ def sniper_education(request):
          return render(request,'membership/all_memberships.html')
 
 def introduction(request):
+    courses = CourseModel.objects.all().filter(chapter=1)
     lessons = LessonModel.objects.all().filter(chapter=1)
+    count = LessonModel.objects.all().filter(chapter=1).count()
     context = {
-    
+        'courses': courses,
         'lessons' : lessons,
+        'count': count,
     }
     return render(request, 'education/introduction.html', context)
 
 
 def forexfoundamentals(request):
+    courses = CourseModel.objects.all().filter(chapter=2)
     lessons = LessonModel.objects.all().filter(chapter=2)
+    count = LessonModel.objects.all().filter(chapter=2).count()
     context = {
-    
+        'courses': courses,
         'lessons' : lessons,
+        'count': count,
     }
 
     return render(request,'education/forexfoundamentals.html', context)
+
+
+
+def Characteristicsofcandlesticks(request):
+    courses = CourseModel.objects.all().filter(chapter=3)
+    lessons = LessonModel.objects.all().filter(chapter=3)
+    count = LessonModel.objects.all().filter(chapter=3).count()
+    context = {
+    
+        'lessons' : lessons,
+        'courses': courses,
+        'count': count
+    }
+
+    return render(request,'education/Characteristicsofcandlesticks.html', context)
 
 
 def all_courses_ch1(request):
@@ -74,7 +95,14 @@ def all_courses_ch2(request):
     return render(request, 'education/all_courses_chapter2.html', context)
 
 
-
+def all_courses_ch3(request):
+    courses = CourseModel.objects.all().filter(chapter=3)
+    lessons = LessonModel.objects.all().filter(chapter=3)
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+    }
+    return render(request, 'education/all_courses_chapter3.html', context)
 
 
 def course_detail(request, course_id):
