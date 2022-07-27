@@ -78,14 +78,16 @@
 
     <div class="left_sidebar">
       <div class="close_icon">
-        <a href="introduction.html"><img src="assets/images/sidebar/delete-order.png' %}" alt="icon">Course Name</a>
+        {% if main_lesson %}
+        <a href="introduction.html"><img src="{% static 'images/sidebar/delete-order.png' %}" alt="icon">Course name: {{  main_lesson.course }}</a>
+        {% endif %}
         <p>Your progress: <b>0</b> of <b>20</b> (0%) <button><img src="assets/images/sidebar/check.png' %}" alt="icon"> Mark as Complete</button></p>
       </div>
 
-      <ul class="sidebar_item">
+      <!-- <ul class="sidebar_item">
         <li class="sidebar_single_item">
           <a href="lession-1.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>What is Forex Trading?</span></a>
-        </li>
+        </li> -->
     
       </ul>
 
@@ -100,6 +102,7 @@
 			
 			<p>Video below</p>
 			{% if main_lesson %}
+      {% if main_lesson.video %}
 			<!-- <video src="{{main_lesson.video.url}}" width="100%" height="564" frameborder="0" allow="autoplay; fullscreen preload" allowfullscreen ></video> -->
       <video id="movie" width="320" height="320" preload controls>
         <source src="{{main_lesson.video.url}}"  />
@@ -108,6 +111,9 @@
           <param ... />
         </object>
       </video>
+      {% else %}
+      <p>no video</p>
+      {% endif %}
       
           <p>&nbsp;</p>
           <p>&nbsp;</p>
@@ -116,7 +122,11 @@
           <!-- <p>Forex trading is like the currency exchange you may do while traveling. An individual buys one currency and sells another, and the conversation rate continually fluctuates based on supply and demand. Currencies are traded in the foreign exchange market, an international marketplace that is open 24 hours a day 5 days a week Monday through Friday. All Forex trading is conducted over the counter (OTC), indicating there’s no physical exchange. A global network of banks and other financial institutions oversee the Forex market.</p> -->
           <br>
           <br>
+          {% if main_lesson.photo_main %}
           <img src="{{main_lesson.photo_main.url}}" width="100%" alt="icon">
+          {% else %}
+          <p>no photo</p>
+          {% endif %}
        {% endif %}   
         </div>
       </div>

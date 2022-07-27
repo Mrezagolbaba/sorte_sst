@@ -79,8 +79,12 @@
     <div class="container">
       <div class="int_forex_area">
         <div class="forex_title">
-         <h1>Forex Fundamental</h1>
-       </div>
+          {% if courses %}
+          {% for crs in courses %}
+         <h1>{{ crs.title }}</h1>
+         {% endfor %}
+       {% endif %}
+        </div>
        <ul class="forex_tag">
         <li><a href="#">Categories</a></li>
         <li>Introduction to Forex</li>
@@ -130,6 +134,7 @@
           <p><img src="{% static 'images/sidebar/wishlist.png' %}" alt="icon">Wishlist</p>
           <div class="forex_progress">
             <p>Course Progress</p>
+            
             <ul>
               {% if count %}
               
@@ -144,7 +149,7 @@
           </div>
           <div class="forex_box">
             <div class="forex_box_top">
-              <a href="{% url 'all_courses_ch2' %}">Start Learning</a>
+              <a href="{% url 'all_courses_ch3' %}">Start Learning</a>
               <p class="forex_complete"><img src="{% static 'images/sidebar/caution.png' %}" alt="icon">Complete all lessons to mark this course as complete</p>
               <p class="forex_enrolled"><img src="{% static 'images/sidebar/caution.png' %}" alt="icon"><span>You enrolled in this course on <b>April 8, 2022</b></span></p>
             </div>

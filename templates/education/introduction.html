@@ -38,16 +38,16 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="memberships.html">Memberships</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'all_memberships' %}">Memberships</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="education.html">Sniper Education</a>
+              <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="store.html">Store</a>
+              <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contactus.html">Contact</a>
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
             </li>
             <li class="nav-item image">
               <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
@@ -131,7 +131,11 @@
           <div class="forex_progress">
             <p>Course Progress</p>
             <ul>
-              <li>0/7</li>
+              {% if count %}
+              
+              <li>0/{{count}}</li>
+        
+              {% endif %}
               <li>0% Complete</li>
             </ul>
             <span class="forex_progress_bg">
@@ -208,11 +212,11 @@
 
             <ul>
               <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Calender</a></li>
-              <li><a href="#">Membership</a></li>
-              <li><a href="#">Store</a></li>
-              <li><a href="#">Contact</a></li>
+              <!-- <li><a href="#">About Us</a></li> -->
+              <li><a href="{% url 'oneonone_reservation' %}">Calender</a></li>
+              <li><a href="{% url 'all_memberships' %}">Membership</a></li>
+              <li><a href="{% url 'store_homepage' %}">Store</a></li>
+              <li><a href="{% url 'contact_us' %}">Contact</a></li>
             </ul>
           </div>
         </div>
