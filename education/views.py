@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import CourseModel, LessonModel, Quiz
 from membership.models import SelectedPackage
@@ -34,6 +35,8 @@ def sniper_education(request):
             return render(request,'membership/all_memberships.html')
     else:
          return render(request,'membership/all_memberships.html')
+
+
 
 def introduction(request):
     courses = CourseModel.objects.all().filter(chapter=1)
@@ -75,6 +78,44 @@ def Characteristicsofcandlesticks(request):
     return render(request,'education/Characteristicsofcandlesticks.html', context)
 
 
+def sr(request):
+    courses = CourseModel.objects.all().filter(chapter=4)
+    lessons = LessonModel.objects.all().filter(chapter=4)
+    count = LessonModel.objects.all().filter(chapter=4).count()
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+        'count': count,
+    }
+
+    return render(request,'education/sr.html', context)
+
+def technical_indicators(request):
+    courses = CourseModel.objects.all().filter(chapter=5)
+    lessons = LessonModel.objects.all().filter(chapter=5)
+    count = LessonModel.objects.all().filter(chapter=5).count()
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+        'count': count,
+    }
+
+    return render(request,'education/technical_indicators.html', context)
+
+
+def sniper_strategies(request):
+    courses = CourseModel.objects.all().filter(chapter=6)
+    lessons = LessonModel.objects.all().filter(chapter=6)
+    count = LessonModel.objects.all().filter(chapter=6).count()
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+        'count': count,
+    }
+
+    return render(request,'education/sniper_strategies.html', context)
+
+
 def all_courses_ch1(request):
     courses = CourseModel.objects.all().filter(chapter=1)
     lessons = LessonModel.objects.all().filter(chapter=1)
@@ -104,6 +145,32 @@ def all_courses_ch3(request):
     }
     return render(request, 'education/all_courses_chapter3.html', context)
 
+def all_courses_ch4(request):
+    courses = CourseModel.objects.all().filter(chapter=4)
+    lessons = LessonModel.objects.all().filter(chapter=4)
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+    }
+    return render(request, 'education/all_courses_chapter4.html', context)
+
+def all_courses_ch5(request):
+    courses = CourseModel.objects.all().filter(chapter=5)
+    lessons = LessonModel.objects.all().filter(chapter=5)
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+    }
+    return render(request, 'education/all_courses_chapter5.html', context)
+
+def all_courses_ch6(request):
+    courses = CourseModel.objects.all().filter(chapter=6)
+    lessons = LessonModel.objects.all().filter(chapter=6)
+    context = {
+        'courses': courses,
+        'lessons' : lessons,
+    }
+    return render(request, 'education/all_courses_chapter5.html', context)
 
 def course_detail(request, course_id):
     main_course = get_object_or_404(CourseModel, id=course_id)
