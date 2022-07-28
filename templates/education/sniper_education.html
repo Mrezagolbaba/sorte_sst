@@ -97,6 +97,7 @@
 		  
 	    <p>&nbsp;</p>
 		  <div class="spacer">
+        
 		  <a href="{% url 'introduction' %}">
         <img href="{% url 'introduction' %}" src="{% static 'images/education/01-Introduction-to-Forex.png' %}" alt="Introduction to Forex">
 		  </a>
@@ -109,10 +110,16 @@
     </div>
 		   <p>&nbsp;</p>
 		  <div class="spacer">
+        <a href="{% url 'sr' %}">
 		   <img src="{% static 'images/education/04-Support-Resistance-Chart-Patterns.png' %}" alt="Support Resistance Chart Patterns">
-		  <img src="{% static 'images/education/05-Technical-Indicators.png' %}" alt="Technical Indicators">
-		  <img src="{% static 'images/education/06-Sniper-Strategies.png' %}" alt="Sniper Strategies">
-			  </div>
+		  </a>
+      <a href="{% url 'technical_indicators' %}">
+       <img src="{% static 'images/education/05-Technical-Indicators.png' %}" alt="Technical Indicators">
+       </a>
+       <a href="{% url 'sniper_strategies' %}">
+       <img src="{% static 'images/education/06-Sniper-Strategies.png' %}" alt="Sniper Strategies">
+			</a>  
+      </div>
 		  
 		  <div class="devider text-center">
         <img class="img-fluid w-100" src="{% static 'images/membership/dot.png' %}" alt="dots">
