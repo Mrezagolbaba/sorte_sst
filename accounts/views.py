@@ -5,8 +5,9 @@ from django.contrib.auth import logout as logout_
 from django.contrib.auth.models import User
 from .models import DiscordModel
 from membership.models import LiveSession, SelectedPackage
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='login')
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
 
@@ -55,7 +56,7 @@ def login(request):
     
     return render(request, 'accounts/login.html')
 
-
+@login_required(login_url='login')
 def discord(request):
     discord_user = DiscordModel.objects.all().filter(user=request.user)
     context = {
@@ -66,10 +67,11 @@ def discord(request):
 def discord_save(request):
     if request.method == 'POST':
         user = request.user
+        email = user.email
         discord_id = request.POST['discord_id']
         check_for_repeat = DiscordModel.objects.all().filter(discord_id=discord_id)
         if not check_for_repeat:
-            discord = DiscordModel.objects.create(user=user, discord_id=discord_id)
+            discord = DiscordModel.objects.create(user=user, email=email,discord_id=discord_id)
             discord.save()
             
         else:
@@ -78,7 +80,7 @@ def discord_save(request):
     return redirect('discord')
 
     # return redirect('discord')
-
+@login_required(login_url='login')
 def bookings(request):
     bookings = LiveSession.objects.all().filter(user=request.user)
     context = {
@@ -87,7 +89,7 @@ def bookings(request):
     return render(request, 'accounts/bookings.html', context)
 
 
-
+@login_required(login_url='login')
 def bought_package(request):
     membership = SelectedPackage.objects.all().filter(user=request.user)
     context = {
