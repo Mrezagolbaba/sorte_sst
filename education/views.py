@@ -141,7 +141,7 @@ def all_courses_ch2(request):
         }
         return render(request, 'education/all_courses_chapter2.html', context)
     else:
-        messages.info(request, 'You did not passed the quiz for last course.')
+        messages.info(request, 'You did not passed the quiz of Introduction of Forex.')
         return redirect('sniper_education')
 
 def all_courses_ch3(request):
@@ -160,35 +160,64 @@ def all_courses_ch3(request):
         return render(request, 'education/all_courses_chapter3.html', context)
 
     else:
-        messages.info(request, 'You did not passed the quiz for last course.')
+        messages.info(request, 'You did not passed the quiz of Forex Fundamentals.')
         return redirect('sniper_education')
 
 def all_courses_ch4(request):
-    courses = CourseModel.objects.all().filter(chapter=4)
-    lessons = LessonModel.objects.all().filter(chapter=4)
-    context = {
-        'courses': courses,
-        'lessons' : lessons,
-    }
-    return render(request, 'education/all_courses_chapter4.html', context)
+    quiz_passed_check = Quiz.objects.all().filter(chapter=3)
+    check = None
+    for quiz in quiz_passed_check:
+        check = quiz.passed
+    
+    if check:
+        courses = CourseModel.objects.all().filter(chapter=4)
+        lessons = LessonModel.objects.all().filter(chapter=4)
+        context = {
+            'courses': courses,
+            'lessons' : lessons,
+        }
+        return render(request, 'education/all_courses_chapter4.html', context)
+    else:
+        messages.info(request, 'You did not passed the quiz of Technical Characteristics of candlesticks.')
+        return redirect('sniper_education')  
 
 def all_courses_ch5(request):
-    courses = CourseModel.objects.all().filter(chapter=5)
-    lessons = LessonModel.objects.all().filter(chapter=5)
-    context = {
-        'courses': courses,
-        'lessons' : lessons,
-    }
-    return render(request, 'education/all_courses_chapter5.html', context)
+    quiz_passed_check = Quiz.objects.all().filter(chapter=4)
+    check = None
+    for quiz in quiz_passed_check:
+        check = quiz.passed
+    
+    if check:
+        courses = CourseModel.objects.all().filter(chapter=5)
+        lessons = LessonModel.objects.all().filter(chapter=5)
+        context = {
+            'courses': courses,
+            'lessons' : lessons,
+        }
+        return render(request, 'education/all_courses_chapter5.html', context)
+    else:
+        messages.info(request, 'You did not passed the quiz of Technical Support and Resistance.')
+        return redirect('sniper_education')  
+
 
 def all_courses_ch6(request):
-    courses = CourseModel.objects.all().filter(chapter=6)
-    lessons = LessonModel.objects.all().filter(chapter=6)
-    context = {
-        'courses': courses,
-        'lessons' : lessons,
-    }
-    return render(request, 'education/all_courses_chapter5.html', context)
+    quiz_passed_check = Quiz.objects.all().filter(chapter=5)
+    check = None
+    for quiz in quiz_passed_check:
+        check = quiz.passed
+    
+    if check:
+        courses = CourseModel.objects.all().filter(chapter=6)
+        lessons = LessonModel.objects.all().filter(chapter=6)
+        context = {
+            'courses': courses,
+            'lessons' : lessons,
+        }
+        return render(request, 'education/all_courses_chapter5.html', context)
+    else:
+        messages.info(request, 'You did not passed the quiz of Technical Indicators.')
+        return redirect('sniper_education')  
+
 
 def course_detail(request, course_id):
     main_course = get_object_or_404(CourseModel, id=course_id)
