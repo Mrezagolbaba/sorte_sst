@@ -17,6 +17,7 @@ class Quiz(models.Model):
     answer4 = models.CharField(max_length=400)
     correct_answer = models.CharField(max_length=400)
     chapter = models.IntegerField(default=1)
+    passed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.question

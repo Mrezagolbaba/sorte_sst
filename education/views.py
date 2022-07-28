@@ -197,17 +197,20 @@ def quiz_detail(request, quiz_id):
 
 def check_quiz(request):
     if request.method == "POST":
-        question = request.POST['question']
-        quiz = Quiz.objects.all().filter(question=question)
-        correct = quiz[:5]
-        answer1 = request.POST['answer1']
-        answer2 = request.POST['answer2']
-        answer3 = request.POST['answer3']
-        answer4 = request.POST['answer4'] 
-        
-        print(answer1)
-        print(answer2)
-        print(answer3)
-        print(answer4)
+        correct = request.POST['correct'] 
+        user_answer = request.POST['final']
+        correct = str(correct)
+        user_answer = str(user_answer)
+        correct = correct.replace(" ", "")
+        user_answer = user_answer.replace(" ", "")
+
+        if correct == user_answer:
+            messages.info(request, 'Congratulations! You have passed the course! keep going...')
+            return render(request,'education/sniper_education.html')
+        else:
+            messages.info(request, 'You did not passed the course! keep going try one more time.')
+            return render(request,'education/sniper_education.html')
+    else:
+        return redirect('sniper_education')
+
     
-    return redirect('sniper_education')
