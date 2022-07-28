@@ -10,6 +10,7 @@ auth_user = settings.AUTH_USER_MODEL if getattr(
 
 
 class Quiz(models.Model):
+    user = models.ForeignKey(auth_user, on_delete=models.CASCADE, null=True, blank=True)
     question = models.CharField(max_length=200)
     answer1 = models.CharField(max_length=400)
     answer2 = models.CharField(max_length=400)

@@ -127,23 +127,41 @@ def all_courses_ch1(request):
 
 
 def all_courses_ch2(request):
-    courses = CourseModel.objects.all().filter(chapter=2)
-    lessons = LessonModel.objects.all().filter(chapter=2)
-    context = {
-        'courses': courses,
-        'lessons' : lessons,
-    }
-    return render(request, 'education/all_courses_chapter2.html', context)
-
+    quiz_passed_check = Quiz.objects.all().filter(chapter=1)
+    check = None
+    for quiz in quiz_passed_check:
+        check = quiz.passed
+    
+    if check:
+        courses = CourseModel.objects.all().filter(chapter=2)
+        lessons = LessonModel.objects.all().filter(chapter=2)
+        context = {
+            'courses': courses,
+            'lessons' : lessons,
+        }
+        return render(request, 'education/all_courses_chapter2.html', context)
+    else:
+        messages.info(request, 'You did not passed the quiz for last course.')
+        return redirect('sniper_education')
 
 def all_courses_ch3(request):
-    courses = CourseModel.objects.all().filter(chapter=3)
-    lessons = LessonModel.objects.all().filter(chapter=3)
-    context = {
-        'courses': courses,
-        'lessons' : lessons,
-    }
-    return render(request, 'education/all_courses_chapter3.html', context)
+    quiz_passed_check = Quiz.objects.all().filter(chapter=2)
+    check = None
+    for quiz in quiz_passed_check:
+        check = quiz.passed
+    
+    if check:
+        courses = CourseModel.objects.all().filter(chapter=3)
+        lessons = LessonModel.objects.all().filter(chapter=3)
+        context = {
+            'courses': courses,
+            'lessons' : lessons,
+        }
+        return render(request, 'education/all_courses_chapter3.html', context)
+
+    else:
+        messages.info(request, 'You did not passed the quiz for last course.')
+        return redirect('sniper_education')
 
 def all_courses_ch4(request):
     courses = CourseModel.objects.all().filter(chapter=4)
@@ -197,6 +215,9 @@ def quiz_detail(request, quiz_id):
 
 def check_quiz(request):
     if request.method == "POST":
+
+        question = request.POST['question']
+        quiz = Quiz.objects.all().filter(question=question)
         correct = request.POST['correct'] 
         user_answer = request.POST['final']
         correct = str(correct)
@@ -206,6 +227,11 @@ def check_quiz(request):
 
         if correct == user_answer:
             messages.info(request, 'Congratulations! You have passed the course! keep going...')
+            for q in quiz:
+                q.user = request.user
+                q.passed = True
+                q.save()
+            
             return render(request,'education/sniper_education.html')
         else:
             messages.info(request, 'You did not passed the course! keep going try one more time.')
