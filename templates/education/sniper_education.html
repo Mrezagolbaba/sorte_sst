@@ -85,6 +85,14 @@
   <section class="membership-program">
     <div class="container">
       <div class="section-header text-center">
+        {% if messages %}
+        <!-- <ul class="messages" > -->
+          <ul align="center">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"  {% endif %}><h3>{{ message }}</h3></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
         <h2 class="section-heading pb-2">Stock Sniper Trading Education</h2>
         <p>To get strated, you need to complete the course step by step.</p>
 		   <p>&nbsp;</p>

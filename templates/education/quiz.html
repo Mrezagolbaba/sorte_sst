@@ -96,30 +96,46 @@
         {% csrf_token %}
         <h2 name="question2" id="question2">{{ quiz.question }}</h2>
         <input type="text" id="question" name="question" value="{{quiz.question}}" hidden="true">
+        <input type="text" id="correct" name="correct" value="{{quiz.correct_answer}} " hidden="true">
+        <!-- <input type="text" id="question" name="question" value="{{quiz.question}}" hidden="true"> -->
         <p>
-          <input type="radio" id="answer1" name="answer" checked>
-          <label for="test1">{{ quiz.answer1 }}</label>
+          <!-- <input type="radio" id="answer1" name="answer" checked> -->
+          <input type="text" class="form-control input-box" id="answer1" name="answer1" value="{{ quiz.answer1 }}">
+          <!-- <label for="test1"></label> -->
         </p>
         <p>
-          <input type="radio" id="answer2" name="answer">
-          <label for="test2">{{ quiz.answer2 }}</label>
+          <!-- <input type="radio" id="answer2" name="answer2"> -->
+          <input type="text" class="form-control input-box" id="answer2" name="answer2" value="{{ quiz.answer2 }}">
+          <!-- <label for="test2">{{ quiz.answer2 }}</label> -->
         </p>
         <p>
-          <input type="radio" id="answer3" name="answer">
-          <label for="test3">{{ quiz.answer3 }}</label>
+          <!-- <input type="radio" id="answer3" name="answer3"> -->
+          <input type="text" class="form-control input-box" id="answer3" name="answer3" value="{{ quiz.answer3 }}">
+          <!-- <label for="test3">{{ quiz.answer3 }}</label> -->
         </p>
         <p>
-          <input type="radio" id="answer4" name="answer">
-          <label for="test4">{{ quiz.answer4 }}</label>
+          <!-- <input type="radio" id="answer4" name="answer4"> -->
+          <input type="text" class="form-control input-box" id="answer4" name="answer4" value="{{ quiz.answer4 }}">
+          <!-- <label for="test4">{{ quiz.answer4 }}</label> -->
         </p>
-        <input type="text" name="final_answer" id="final_answer">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+     
+        <p align="center">&#x2193; Copy and Paste your selected Answer &#x2193;</p>
+        <p></p>
+        <input type="text" class="form-control input-box" id="final" name="final" >
+        <p></p>
+        <!-- <p align="center"><input type="submit" value="Submit the answer"> -->
+         <p align="center" > <input type="submit"  value="Check the answer" class="custom-red-button"></input></p>
         <div class="quiz_button">
           <div class="nextprev">
             <!-- <button>Prev</button>
             <button>Next</button> -->
             <!-- <button>Finish</button> -->
-            <input type="submit" value="Submit the answer">
-
+            <!-- <input type="submit" value="Submit the answer"> -->
+            
           </div>
         </div>
 
