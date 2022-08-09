@@ -1,5 +1,4 @@
-from ast import parse
-from multiprocessing import context
+from pages.models import NewsletterModel
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Packages, SelectedPackage, Reservation, LiveSession, Tradeidea
@@ -163,9 +162,12 @@ def oneonone_make_reservation(request, session_id):
 
 
 def ten_days_left_members(request):
-    all_users = SelectedPackage.objects.all()
+    expired_users = None
+    discord_username = None
+    all_users = SelectedPackage.objects.all().filter(status='Active')
     context = None
     today = date.today()
+    ten_days_left=False
     zero_days = False
     list_search_by_email = []
     for member in all_users:
@@ -186,10 +188,11 @@ def ten_days_left_members(request):
                 list_search_by_email.append(member.email)    
                 pass
         if today < expire_date:
-
+            print(b[0])
             if int(b[0]) == 0:
               zero_days = True  
-            if int(b[0]) <= 10 :
+            if int(b[0:2]) <= 10 :
+                print('b[0:2]: ', b[0:2])
                 ten_days_left = True
 
         
@@ -224,7 +227,7 @@ def ten_days_left_members(request):
 
     
     for item in list_search_by_email:
-        expired_users = SelectedPackage.objects.all().filter(email=item)
+        expired_users = SelectedPackage.objects.all().filter(email=item,status='Active')
         discord_username = DiscordModel.objects.all().filter(email=item)
         # print(item)
 
@@ -236,4 +239,9 @@ def ten_days_left_members(request):
     return render(request, 'membership/ten_days.html', context)
         
 
-# def oreder//////
+def membership_newsletter(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        subscriber = NewsletterModel(user= request.user,email=email)
+        subscriber.save()
+    return redirect('index')

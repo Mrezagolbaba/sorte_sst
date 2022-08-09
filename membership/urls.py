@@ -18,5 +18,6 @@ urlpatterns = [
     path('oneonone_reservation', oneonone_reservation, name='oneonone_reservation'),
     path('reservation-detail/<int:session_id>', oneonone_reservation_detail, name='reservationdetail'),
     path('reserved/<int:session_id>', oneonone_make_reservation, name='reserved'),
-    path('expiration_check', ten_days_left_members, name='expiration_check')
+    path('expiration_check', ten_days_left_members, name='expiration_check'),
+    path('membership_newsletter', membership_newsletter, name='membership_newsletter'),
     ]

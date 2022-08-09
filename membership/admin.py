@@ -7,7 +7,7 @@ class PackageAdmin(admin.ModelAdmin):
 
 class SelectedPackageAdmin(admin.ModelAdmin):
     list_display = ('user', 'title', 'start_date', 'end_date')
-    list_filter = ('title', 'start_date', 'end_date')
+    list_filter = ('title', 'status' , 'start_date', 'end_date')
 
 class ReservationAdmin(admin.ModelAdmin):
     list_display = ('user', 'reserved_start_date', 'reserved_end_date')
