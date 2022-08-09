@@ -39,13 +39,13 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Memberships</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'all_memberships' %}">Memberships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Store</a>
+              <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
@@ -68,10 +68,6 @@
               <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
             {% endif %}
-          
-            <li class="nav-item">
-              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
-            </li>
           </ul>
         </div>
       </div>  
@@ -119,68 +115,7 @@
         {% endif %}
         {% endfor %}
       {% endif %}
-         <!-- <li class="sidebar_single_item">
-          <a href="quiz-1.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>{{crs.quiz}}</span></a>
-        </li> -->
-      
-       
-        <!-- <li class="sidebar_single_item">
-          <a href="quiz-1.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-2.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>How are Currency’s Traded?</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-2.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-3.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>What are Currency Pairs</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-3.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-4.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>How are Currency Pairs Quoted</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-4.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-5.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>What are Majors, Minors, and Exotics?</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-5.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-6.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>What are Indicies and Commodities?</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-6.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-7.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>What is the Best/Worst times to Trade?</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-7.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-8.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>What are the 3 Market Movements?</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-8.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-9.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>Important Words to know</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-9.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="lession-10.html"><img src="{% static 'images/sidebar/education01.png' %}" alt="icon"><span>Risks of Forex</span></a>
-        </li>
-        <li class="sidebar_single_item">
-          <a href="quiz-10.html"><img src="{% static 'images/sidebar/quiz1.png' %}" alt="icon"><span>Quiz 1</span></a>
-        </li> -->
+ 
       </ul>
 
     </div>
@@ -239,12 +174,12 @@
             <h4>Navigation</h4>
 
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Calender</a></li>
-              <li><a href="#">Membership</a></li>
-              <li><a href="#">Store</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <!-- <li><a href="#">About Us</a></li> -->
+              <li><a href="{% url 'oneonone_reservation' %}">Calender</a></li>
+              <li><a href="{% url 'all_memberships' %}">Membership</a></li>
+              <li><a href="{% url 'store_homepage' %}">Store</a></li>
+              <li><a href="{% url 'contact_us' %}">Contact</a></li>
             </ul>
           </div>
         </div>

@@ -46,7 +46,7 @@
               <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'store_homepage'%}">Store</a>
+              <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
@@ -54,15 +54,21 @@
             <li class="nav-item image">
               <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign In</a>
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a  href="#" class="nav-link btn custom-red-button">Join Us</a>
+              <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
+              <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </div>  
@@ -184,6 +190,7 @@
 
             <ul>
               <li><a href="{% url 'index' %}">Home</a></li>
+              <!-- <li><a href="#">About Us</a></li> -->
               <li><a href="{% url 'oneonone_reservation' %}">Calender</a></li>
               <li><a href="{% url 'all_memberships' %}">Membership</a></li>
               <li><a href="{% url 'store_homepage' %}">Store</a></li>

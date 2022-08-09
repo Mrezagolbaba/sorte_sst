@@ -40,7 +40,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'all_memberships' %}">Memberships</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'all_memberships' %}">Memberships</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'sniper_education' %}">Sniper Education</a>
@@ -49,20 +49,26 @@
               <a class="nav-link" href="{% url 'store_homepage' %}">Store</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'contact_us' %}">Contact</a>
+              <a class="nav-link" href="{% url 'contact_us' %}">Contact</a>
             </li>
             <li class="nav-item image">
               <img src="{% static 'images/nav/vertical-line-copy.png' %}" alt="vertical-bots">
             </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Sign In</a>
             </li>
             <li class="nav-item">
-              <!-- <a  href="register.html" class="nav-link btn custom-red-button">Join Us</a> -->
+              <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
-            </li>
+            {% endif %}
           </ul>
         </div>
       </div>  

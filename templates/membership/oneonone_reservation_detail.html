@@ -66,11 +66,10 @@
             <li class="nav-item">
               <a  href="{% url 'register' %}" class="nav-link btn custom-red-button">Join Us</a>
             </li>
-            {% endif %}
-          
+            <!-- {% endif %}
             <li class="nav-item">
               <a class="nav-link cart-btn"  href="#"><i class="fal fa-shopping-cart"></i> <sup>0</sup></a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>  
@@ -281,12 +280,12 @@
             <h4>Navigation</h4>
 
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Calender</a></li>
-              <li><a href="#">Membership</a></li>
-              <li><a href="#">Store</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <!-- <li><a href="#">About Us</a></li> -->
+              <li><a href="{% url 'oneonone_reservation' %}">Calender</a></li>
+              <li><a href="{% url 'all_memberships' %}">Membership</a></li>
+              <li><a href="{% url 'store_homepage' %}">Store</a></li>
+              <li><a href="{% url 'contact_us' %}">Contact</a></li>
             </ul>
           </div>
         </div>
