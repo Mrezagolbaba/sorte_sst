@@ -135,10 +135,11 @@
             <span>and Stay up to date with all events coming straight:</span> </h2>
         </div>
         <div class="pt-3">
-            <form class="form-control form-body rounded-pill m-auto" action="#" method="Post">
+            <form class="form-control form-body rounded-pill m-auto" action="newsletter" method="POST">
+              {% csrf_token %}
               <i class="fas fa-envelope"></i>
-              <input class="input form-control" type="email" name="text" placeholder="Your Email Address">
-              <button type="button" class="btn btn-subscribe">Subscribe</button>
+              <input class="input form-control" type="email" name="email" placeholder="Your Email Address">
+              <button type="submit" class="btn btn-subscribe">Subscribe</button>
             </form>
         </div>
       </div>
