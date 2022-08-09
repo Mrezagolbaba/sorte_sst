@@ -132,11 +132,13 @@
             <p>Course Progress</p>
             <ul>
               {% if count %}
-              
-              <li>0/{{count}}</li>
-        
+              {% if done_lessons %}
+              <li>{{done_lessons}}/{{count}}</li>
               {% endif %}
-              <li>0% Complete</li>
+              {% endif %}
+              {% if completed %}
+              <li>{{completed}}% Complete</li>
+              {% endif %}
             </ul>
             <span class="forex_progress_bg">
               <span style="width: 0%;" class="forex_progress_percent"></span>

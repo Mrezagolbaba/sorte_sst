@@ -79,9 +79,9 @@
     <div class="left_sidebar">
       <div class="close_icon">
         {% if main_lesson %}
-        <a href="introduction.html"><img src="{% static 'images/sidebar/delete-order.png' %}" alt="icon">Course name: {{  main_lesson.course }}</a>
+        <a href="introduction.html"><img src="{% static 'images/sidebar/delete-order.png' %}" alt="icon">Course name: {{  main_lesson.course }} -  Lesson's title: {{main_lesson.title}}</a>
         {% endif %}
-        <p>Your progress: <b>0</b> of <b>20</b> (0%) <button><img src="assets/images/sidebar/check.png' %}" alt="icon"> Mark as Complete</button></p>
+        <!-- <p>Your progress: <b>0</b> of <b>20</b> (0%) <button><img src="assets/images/sidebar/check.png' %}" alt="icon"> Mark as  Complete</button></p> -->
       </div>
 
       <!-- <ul class="sidebar_item">
@@ -99,7 +99,7 @@
           <img src="{% static 'images/courses/What-is-forex01.jpg' %}" width="100%" alt="icon">
           <br>
           <!-- <img src="{% static 'images/courses/What-is-forex-1.png' %}" alt="icon"> -->
-			
+			<div align="center">
 			<p>Video below</p>
 			{% if main_lesson %}
       {% if main_lesson.video %}
@@ -127,7 +127,17 @@
           {% else %}
           <p>no photo</p>
           {% endif %}
-       {% endif %}   
+       {% endif %}
+      </div>   
+       <br>
+       <br>
+       {%if main_lesson%}
+       <form action="finish_lesson" method="POST">
+        {% csrf_token %}
+        <input type="text" id="title" name="title" value="{{main_lesson.title}}" hidden="true">
+       <input type="submit"  class="custom-red-button" value="Finish the lesson" >
+      </form>
+      {%endif%}
         </div>
       </div>
     </div>
