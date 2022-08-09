@@ -20,7 +20,7 @@ urlpatterns = [
     path('quiz-detail/<int:quiz_id>', quiz_detail,name='quiz-detail'),
     path('quiz-detail/check-quiz', check_quiz, name='check-quiz'),
     path('lesson_detail/finish_lesson', finish_lesson, name='finish_lessons'),
-
+    path('education_newsletter', education_newsletter, name='education_newsletter'),
 ]
 
 

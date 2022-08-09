@@ -1,10 +1,9 @@
-from multiprocessing import context
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import CourseModel, LessonModel, Quiz
 from membership.models import SelectedPackage
 from django.contrib import messages
 from datetime import date
-
+from pages.models import NewsletterModel
 
 
 def sniper_education(request):
@@ -314,3 +313,9 @@ def finish_lesson(request):
             print("Done")
         return redirect('index')
 
+def education_newsletter(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        subscriber = NewsletterModel(user= request.user,email=email)
+        subscriber.save()
+    return redirect('index')
