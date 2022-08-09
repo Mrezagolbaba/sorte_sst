@@ -19,6 +19,7 @@ urlpatterns = [
     path('lesson_detail/<int:lesson_id>', lesson_detail, name='lesson_detail'),
     path('quiz-detail/<int:quiz_id>', quiz_detail,name='quiz-detail'),
     path('quiz-detail/check-quiz', check_quiz, name='check-quiz'),
+    path('lesson_detail/finish_lesson', finish_lesson, name='finish_lessons'),
 
 ]
 

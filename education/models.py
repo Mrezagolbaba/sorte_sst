@@ -50,6 +50,11 @@ class CourseModel(models.Model):
         return self.title
     
 
+LESSON_STATUS = (
+    ('Done', 'Done'),
+    ('Pending', 'Pending')
+)
+
 class LessonModel(models.Model):
     chapter = models.IntegerField(default=1)
     course = models.ForeignKey(CourseModel, on_delete=models.CASCADE, null=True, blank=True)
@@ -61,6 +66,7 @@ class LessonModel(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,null=True,blank=True)
     number = models.IntegerField(default=1)
     point = models.FloatField(default=3.39)
+    status = models.CharField(max_length=20, choices=LESSON_STATUS, default='Pending' )
 
     def __str__(self):
         return self.title

@@ -41,11 +41,16 @@ def sniper_education(request):
 def introduction(request):
     courses = CourseModel.objects.all().filter(chapter=1)
     lessons = LessonModel.objects.all().filter(chapter=1)
+    done_lessons = LessonModel.objects.all().filter(chapter=1, status='Done').count()
     count = LessonModel.objects.all().filter(chapter=1).count()
+    percentage = 100 / count
+    completed = int(done_lessons * percentage)
     context = {
         'courses': courses,
         'lessons' : lessons,
         'count': count,
+        'done_lessons' : done_lessons,
+        'completed' : completed,
     }
     return render(request, 'education/introduction.html', context)
 
@@ -53,11 +58,16 @@ def introduction(request):
 def forexfoundamentals(request):
     courses = CourseModel.objects.all().filter(chapter=2)
     lessons = LessonModel.objects.all().filter(chapter=2)
+    done_lessons = LessonModel.objects.all().filter(chapter=2, status='Done').count()
     count = LessonModel.objects.all().filter(chapter=2).count()
+    percentage = 100 / count
+    completed = int(done_lessons * percentage)
     context = {
         'courses': courses,
         'lessons' : lessons,
         'count': count,
+        'done_lessons' : done_lessons,
+        'completed' : completed,
     }
 
     return render(request,'education/forexfoundamentals.html', context)
@@ -67,12 +77,17 @@ def forexfoundamentals(request):
 def Characteristicsofcandlesticks(request):
     courses = CourseModel.objects.all().filter(chapter=3)
     lessons = LessonModel.objects.all().filter(chapter=3)
+    done_lessons = LessonModel.objects.all().filter(chapter=3, status='Done').count()
     count = LessonModel.objects.all().filter(chapter=3).count()
+    percentage = 100 / count
+    completed = int(done_lessons * percentage)
     context = {
     
         'lessons' : lessons,
         'courses': courses,
-        'count': count
+        'count': count,
+        'done_lessons' : done_lessons,
+        'completed' : completed,
     }
 
     return render(request,'education/Characteristicsofcandlesticks.html', context)
@@ -81,11 +96,16 @@ def Characteristicsofcandlesticks(request):
 def sr(request):
     courses = CourseModel.objects.all().filter(chapter=4)
     lessons = LessonModel.objects.all().filter(chapter=4)
+    done_lessons = LessonModel.objects.all().filter(chapter=4, status='Done').count()
     count = LessonModel.objects.all().filter(chapter=4).count()
+    percentage = 100 / count
+    completed = int(done_lessons * percentage)
     context = {
         'courses': courses,
         'lessons' : lessons,
         'count': count,
+        'done_lessons' : done_lessons,
+        'completed' : completed,
     }
 
     return render(request,'education/sr.html', context)
@@ -93,11 +113,16 @@ def sr(request):
 def technical_indicators(request):
     courses = CourseModel.objects.all().filter(chapter=5)
     lessons = LessonModel.objects.all().filter(chapter=5)
+    done_lessons = LessonModel.objects.all().filter(chapter=5, status='Done').count()
     count = LessonModel.objects.all().filter(chapter=5).count()
+    percentage = 100 / count
+    completed = int(done_lessons * percentage)
     context = {
         'courses': courses,
         'lessons' : lessons,
         'count': count,
+        'done_lessons' : done_lessons,
+        'completed' : completed,
     }
 
     return render(request,'education/technical_indicators.html', context)
@@ -106,11 +131,16 @@ def technical_indicators(request):
 def sniper_strategies(request):
     courses = CourseModel.objects.all().filter(chapter=6)
     lessons = LessonModel.objects.all().filter(chapter=6)
+    done_lessons = LessonModel.objects.all().filter(chapter=6, status='Done').count()
     count = LessonModel.objects.all().filter(chapter=6).count()
+    percentage = 100 / count
+    completed = int(done_lessons * percentage)
     context = {
         'courses': courses,
         'lessons' : lessons,
         'count': count,
+        'done_lessons' : done_lessons,
+        'completed' : completed,
     }
 
     return render(request,'education/sniper_strategies.html', context)
@@ -119,6 +149,7 @@ def sniper_strategies(request):
 def all_courses_ch1(request):
     courses = CourseModel.objects.all().filter(chapter=1)
     lessons = LessonModel.objects.all().filter(chapter=1)
+    counter = LessonModel.objects.all().filter(chapter=1).count()
     context = {
         'courses': courses,
         'lessons' : lessons,
@@ -229,6 +260,8 @@ def course_detail(request, course_id):
 
 def lesson_detail(request, lesson_id):
     main_lesson = get_object_or_404(LessonModel, id=lesson_id)
+    # counter = main_lesson.lesson.count()
+    # print(counter, 'counteeeeeeeeeeer')
     context = {
         'main_lesson': main_lesson
 
@@ -268,4 +301,16 @@ def check_quiz(request):
     else:
         return redirect('sniper_education')
 
-    
+
+
+def finish_lesson(request):
+    if request.method == "POST":
+        title = request.POST['title']
+        lesson = LessonModel.objects.all().filter(title=title)
+        # print(lesson)
+        for l in lesson:
+            l.status = 'Done'
+            l.save()
+            print("Done")
+        return redirect('index')
+
