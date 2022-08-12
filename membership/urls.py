@@ -21,3 +21,4 @@ urlpatterns = [
     path('expiration_check', ten_days_left_members, name='expiration_check'),
     path('membership_newsletter', membership_newsletter, name='membership_newsletter'),
     ]
+    
