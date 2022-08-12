@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/checkout-table.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+  <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+  <script src="https://js.braintreegateway.com/web/3.39.0/js/client.min.js"></script>
+  <script src="https://js.braintreegateway.com/web/3.39.0/js/paypal-checkout.min.js"></script>
+  <script src="https://js.braintreegateway.com/web/3.39.0/js/client.min.js"></script>
 </head>
 <body>
 
@@ -138,11 +143,16 @@
       <!-- <input type="text" name="title" id="title" value={{ p.title }}> -->
       <!-- <input type="text" name="price" id="price" value={{ p.price }}> -->
                     </div>
+                    <div id="btn-paypal-checkout"></div>
 			
 			<!-- <div class="update-button">
                       <a href="selected_package" class="btn custom-red-button " type="submit">Pay</a>
                     </div> -->
-                    <button class="btn btn-lg btn-primary btn-block" type="submit"> SUBMIT </button>
+                    <button class="btn btn-lg btn-primary btn-block"  id="" type="submit"> SUBMIT </button>
+                    
+                    
+
+                
 </div>
 {% endfor %}
 {% endif %}
@@ -230,7 +240,8 @@
 
 
   <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/custom.js' %}"></script>
+  <!-- <script src="{% static 'js/custom.js' %}"></script> -->
+
   <script>
     // dropdown menu show/hide on hover start
     (function () {
@@ -248,6 +259,84 @@
       })
     })();
     // dropdown menu show/hide on hover end
+
+    // paypayl start here
+
+    window.addEventListener('load',function(){
+      var cardItems=[{
+        name:'',
+        description:'',
+        quantity:'',
+        price:150,
+        sku:'monthly',
+        currency:'USD'
+      }];
+      var total = 0;
+      for(var a=0;a<cardItems.length; a++){
+        total +=(cardItems[a].price*cardItems[a].quantity);
+      }
+
+      // Render the paypal button
+      paypal.Button.render({
+
+        // set your environment
+
+        env:'sandbox' ,// sanbox | production
+        style:{
+          lable : 'checkout',
+          size:'medium',// small |medium|large|responsive
+          shape:'pill', // pill |react
+          color:'gold', // gold |blue|silver|black
+          layout:'vertical'
+        },
+
+        // paypal client 
+        client:{
+          sandbox:'Client Id',// for test
+          production:'client id '// for production
+        },
+        funding:{
+          allowed:[
+            paypal.FUNDING.CARD,
+            paypal.FUNDING.ELV
+          ]
+        },
+        payment: function(data,actions){
+          return actions.payment.create({
+            payment:{
+                  transaction:[{
+                      amount:{
+                        total:total,
+                        currency:'USD'
+                      },
+                      item_list:{
+                        // custom cardItems array creaated specifically for payal
+                        items:cardItems
+                      }
+                  }]
+            }
+          })
+        },
+      onAuthorize:function(data,actions){
+        return actions.payment.execute().then(function(){
+          // you can use all the values received from paypal as you want
+          console.log({
+            'intent':data.intent,
+            'orderID':data.orderID,
+            'payerID':data.payerID,
+            'paymentID':data.paymentID,
+            'paymentToken':data.paymentToken
+          });
+        });
+      },
+
+      onCancel:function(data,actions){
+        // show a cancel page or return to cart
+        console.log(data)
+      }
+    },"#btn-paypal-checkout");
+
+    });
   </script>
 </body>
 </html>
