@@ -105,6 +105,7 @@
   </section>
   <!-- ===//end of banner section === -->
 
+  
 
   <!-- === market trending session section start === -->
   <section class="market-trading-session">
@@ -127,23 +128,29 @@
                         <img class="img-fluid w-100" src="{% static 'images/market-trading/dott.png' %}" alt="DOT">
                       </div>
                     </div>
-                    <div class="counter">
+                    
+                          <div class="counter">
                       <ul class="d-flex justify-content-center">
                         <li class="count-item">
-                          <div class="number"><p id="jday">01</p></div>
-                          <div class="text"><p>Days</p></div>
+                          
+                          {% if tokyo_session %}
+                           {% for ts in tokyo_session %}
+                           {% if ts_dict %}
+                          <div class="number"><p id="jdayy">{{ts_dict.when_ts_d}}</p></div>
+                          <div class="text"><p>Day</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="jhour">10</p></div>
-                          <div class="text"><p>hrs</p></div>
+                          <div class="number"><p id="jhour">{{ts_dict.when_ts_hours}}</p></div>
+                          <div class="text"><p>hr</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="jmin">36</p></div>
-                          <div class="text"><p>mins</p></div>
+                          <div class="number"><p id="jmin">{{ts_dict.when_ts_min}}</p></div>
+                          <div class="text"><p>min</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="jsec">22</p></div>
-                          <div class="text"><p>secs</p></div>
+                          <div class="number"><p id="jsec">{{ts_dict.when_ts_sec}}</p></div>
+                          <div class="text"><p>sec</p></div>
+                        {% endif %}
                         </li>
                       </ul>
                     </div>
@@ -159,6 +166,8 @@
                       <a href="#">
                         <ul class="d-flex justify-content-between align-items-center">
                           <li class="text"><p>Join now</p></li>
+                          {% endfor %}
+                          {% endif %}
                           <li class="icon"><img class="img-fluid w-100" src="{% static 'images/market-trading/live-streaming-red.png' %}" alt="live-streaming"></li>
                         </ul>
                       </a>
@@ -181,20 +190,24 @@
                     <div class="counter">
                       <ul class="d-flex justify-content-center">
                         <li class="count-item">
-                          <div class="number"><p id="lday">01</p></div>
-                          <div class="text"><p>Days</p></div>
+                          {% if london_session %}
+                           {% for ls in london_session %}
+                           {% if ls_dict %}
+                          <div class="number"><p id="ldayy">{{ls_dict.when_ls_d}}</p></div>
+                          <div class="text"><p>Day</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="lhour">10</p></div>
-                          <div class="text"><p>hrs</p></div>
+                          <div class="number"><p id="lhour">{{ls_dict.when_ls_hours}}</p></div>
+                          <div class="text"><p>hr</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="lmin">36</p></div>
-                          <div class="text"><p>mins</p></div>
+                          <div class="number"><p id="lmin">{{ls_dict.when_ls_min}}</p></div>
+                          <div class="text"><p>min</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="lsec">22</p></div>
-                          <div class="text"><p>secs</p></div>
+                          <div class="number"><p id="lsec">{{ls_dict.when_ls_sec}}</p></div>
+                          <div class="text"><p>sec</p></div>
+                          {% endif %}
                         </li>
                       </ul>
                     </div>
@@ -210,6 +223,8 @@
                       <a href="#">
                         <ul class="d-flex justify-content-between align-items-center">
                           <li class="text"><p>Join now</p></li>
+                          {% endfor %}
+                          {% endif %}
                           <li class="icon"><img class="img-fluid w-100" src="{% static 'images/market-trading/live-streaming-green.png' %}" alt="live-streaming"></li>
                         </ul>
                       </a>
@@ -232,20 +247,24 @@
                     <div class="counter">
                       <ul class="d-flex justify-content-center">
                         <li class="count-item">
-                          <div class="number"><p id="nday">01</p></div>
-                          <div class="text"><p>Days</p></div>
+                          {% if ny_session %}
+                           {% for ny in ny_session %}
+                           {% if ny_dict %}
+                          <div class="number"><p id="nday">{{ny_dict.when_ny_d}}</p></div>
+                          <div class="text"><p>Day</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="nhour">10</p></div>
-                          <div class="text"><p>hrs</p></div>
+                          <div class="number"><p id="nhour">{{ny_dict.when_ny_hours}}</p></div>
+                          <div class="text"><p>hr</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="nmin">36</p></div>
-                          <div class="text"><p>mins</p></div>
+                          <div class="number"><p id="nmin">{{ny_dict.when_ny_min}}</p></div>
+                          <div class="text"><p>min</p></div>
                         </li>
                         <li class="count-item">
-                          <div class="number"><p id="nsec">22</p></div>
-                          <div class="text"><p>secs</p></div>
+                          <div class="number"><p id="nsec">{{ny_dict.when_ny_sec}}</p></div>
+                          <div class="text"><p>sec</p></div>
+                          {% endif %}
                         </li>
                       </ul>
                     </div>
@@ -261,6 +280,8 @@
                       <a href="#">
                         <ul class="d-flex justify-content-between align-items-center">
                           <li class="text"><p>Join now</p></li>
+                          {% endfor %}
+                          {% endif %}
                           <li class="icon"><img class="img-fluid w-100" src="{% static 'images/market-trading/live-streaming-green.png' %}" alt="live-streaming"></li>
                         </ul>
                       </a>
