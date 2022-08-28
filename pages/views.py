@@ -10,6 +10,18 @@ def index(request):
     b = today
     today  = str(today)
     today_day = today[0:2]
+    when_ts_d=None
+    when_ts_hours=None
+    when_ts_min=None
+    when_ts_sec=None
+    when_ls_d=None
+    when_ls_hours=None
+    when_ls_min=None
+    when_ls_sec=None
+    when_ny_d=None
+    when_ny_hours=None
+    when_ny_min=None
+    when_ny_sec=None
     tokyo_session = Event.objects.all().filter(title='Tokyo Session', status='Upcoming')
     for ts in tokyo_session:
         when_ts_d =ts.when.strftime ("%d")
