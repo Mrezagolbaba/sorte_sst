@@ -4,8 +4,10 @@ from membership.models import SelectedPackage
 from django.contrib import messages
 from datetime import date
 from pages.models import NewsletterModel
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='login')
 def sniper_education(request):
     user = request.user
     same_user = []
