@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'mysst.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sst_db1',
-        'USER':'sst_user',
-        'PASSWORD':'sstpassword',
-        'HOST':'localhost',
+        'NAME': 'de58rtv0r600tc',
+        'USER':'wzeyzsvqbucxby',
+        'PASSWORD':'c4daa371ccdb640d0c7e527336c4404bf54296b1fb23f6c61b85876ec87f6766',
+        'HOST':'ec2-34-234-240-121.compute-1.amazonaws.com',
         'PORT':'',
     }
 }
@@ -125,12 +125,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+import django.heroku
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mysst/static')
 ]
+
+django.heroku.settings(locals())
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
