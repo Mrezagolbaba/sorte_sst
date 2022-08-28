@@ -5,3 +5,4 @@ requests==2.25.1
 virtualenv==20.14.1
 gunicorn==20.1.0
 Python-dateutil== 2.8.2
+whitenoise==6.2.0
