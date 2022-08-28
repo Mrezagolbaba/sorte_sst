@@ -5,4 +5,5 @@ requests==2.25.1
 virtualenv==20.14.1
 gunicorn==20.1.0
 event== 0.4.3
+python==3.9.9
 
